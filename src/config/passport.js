@@ -46,7 +46,7 @@ module.exports = passport => {
         clientID: appId,
         clientSecret: appSerect,
         callbackURL: `${domain}/users/login/facebook/callback`,
-        profileFields: ['id', 'displayName', 'picture', 'email', 'gender']
+        // profileFields: ['id', 'displayName', 'picture', 'email', 'gender']
       },
       async function(accessToken, refreshToken, profile, cb) {
         try {
