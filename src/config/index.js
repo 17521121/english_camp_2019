@@ -1,6 +1,6 @@
 module.exports = {
     serectKey: "english_camp_serectkey",
-    domain: "https://englishcamp/hsvuit.org",
+    domain: "https://englishcamp.hsvuit.org",
     appId: "1057102251148374",
     appSerect: "712c9ab9806dbd2ab1989dfe0ea984fc"
 }
