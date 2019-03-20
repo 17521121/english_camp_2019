@@ -39,7 +39,7 @@ router.get('/callback',
       let title = `./src/app/public/users/${nameImage}`
       await download_image(userAvatarLink, title);
       let coverLink = `./src/app/public/covers/${nameImage}`
-      await images(__dirname + "/cover.jpg").draw(images(title).resize(200), 10, 10).save(coverLink);
+      await images(__dirname + "/cover.jpg").draw(images(title).resize(400), 10, 10).save(coverLink);
       
       // console.log(newImages)
       await mongoose.model('facebook').findByIdAndUpdate(req.user.data._id, { cover: `${config.domain}/covers/${nameImage}`, userAvatar: `${config.domain}/users/${nameImage}`})
