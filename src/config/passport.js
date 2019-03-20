@@ -23,7 +23,7 @@ module.exports = passport => {
     if (object.isFacebook) {
       mongoose.model('facebook').findById(object.id, (err, user) => {
         if (err) done(err);
-  
+        console.log(user)
         if (user) {
           done(err, user);
         }

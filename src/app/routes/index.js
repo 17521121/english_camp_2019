@@ -27,7 +27,7 @@ router.use(passport.initialize());
 router.use(passport.session()); //persistent login sessions
 
 
-router.use('/users/login/facebook', require('./users//loginFacebook'));
+router.use('/users/login/facebook', require('./users/loginFacebook'));
 
 router.use('/users/login', require('./users/login'))
 router.get('/setup', (req, res, next) => {
@@ -51,7 +51,8 @@ router.get('/setup', (req, res, next) => {
 router.use('/users', require('./users'));
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  console.log('user connected', req.user)
+  res.render('index', { title: 'Express', user: req.user ? req.user : null });
 });
 
 

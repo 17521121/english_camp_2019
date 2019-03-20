@@ -1,10 +1,11 @@
-var router = require("express").Router();
 
-router.post("/logout", async (req, res, next) => {
-  if (req.isAuthenticated()) {
-    req.logout();
-  }
-  return res.redirect("/users/login");
-});
 
-module.exports = router;
+
+module.exports = router => {
+  router.get("/logout", async (req, res, next) => {
+    if (req.isAuthenticated()) {
+      req.logout();
+    }
+    return res.redirect("/users/login");
+  });
+}

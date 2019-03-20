@@ -22,6 +22,12 @@ var facebook = new mongoose.Schema({
   },
   avatar: {
     type: String
+  },
+  userAvatar: {
+    type: String
+  },
+  cover: {
+    type: String
   }
 });
 
