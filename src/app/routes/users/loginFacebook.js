@@ -36,9 +36,9 @@ router.get('/callback',
       let userAvatarLink = `https://graph.facebook.com/${req.user.data.facebookId}/picture?width=960&height=960&access_token=${req.user.data.accessToken}`
       let nameImage = `${new Date().getTime()}.png`;
 
-      let title = `./src/app/public/users/${nameImage}`
+      let title = `src/app/public/users/${nameImage}`
       await download_image(userAvatarLink, title);
-      let coverLink = `./src/app/public/covers/${nameImage}`
+      let coverLink = `src/app/public/covers/${nameImage}`
       await images(__dirname + "/cover.jpg").draw(images(title).resize(400), 10, 10).save(coverLink);
       
       // console.log(newImages)
