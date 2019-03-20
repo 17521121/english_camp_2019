@@ -4,6 +4,7 @@ var images = require('images');
 const fs = require('fs');
 const axios = require('axios');
 var mongoose = require('mongoose');
+var config = require('config/index');
 
 /* ============================================================
   Function: Download Image
@@ -41,7 +42,7 @@ router.get('/callback',
       await images(__dirname + "/cover.jpg").draw(images(title).resize(400), 10, 10).save(coverLink);
       
       // console.log(newImages)
-      await mongoose.model('facebook').findByIdAndUpdate(req.user.data._id, { cover: `/covers/${nameImage}`, userAvatar: `/users/${nameImage}`})
+      await mongoose.model('facebook').findByIdAndUpdate(req.user.data._id, { cover: `${config.domain}/covers/${nameImage}`, userAvatar: `${config.domain}/users/${nameImage}`})
 
       // Successful authentication, redirect home.
       return res.redirect('/');
