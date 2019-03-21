@@ -27,13 +27,13 @@ app.use(
 );
 app.set("Cache-Control", "max-age=3000");
 
-app.use("/api", require("api/index"));
-app.use("/", require("app/routes"));
+app.use("/", require("app/routes/homepage"));
+app.use("/admin", require("app/routes/adminpage"));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  // next(createError(404));
-  res.render("404");
+  next(createError(404));
+  res.render("error");
 });
 
 // error handler
@@ -44,7 +44,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("500");
+  res.render("error");
 });
 
 module.exports = app;
