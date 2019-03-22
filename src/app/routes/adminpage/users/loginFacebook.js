@@ -7,7 +7,7 @@ const axios = require('axios');
 var mongoose = require('mongoose');
 var config = require('config/index');
 var path = require('path');
-var a = require('../../../public/users')
+
 /* ============================================================
   Function: Download Image
 ============================================================ */
