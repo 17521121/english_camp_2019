@@ -4,6 +4,9 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var config = require("config/index");
+var session = require("express-session");
+var passport = require("passport");
+
 
 require("model/connect");
 require("model/schema");
@@ -27,13 +30,39 @@ app.use(
 );
 app.set("Cache-Control", "max-age=3000");
 
-app.use("/api", require("api/index"));
-app.use("/", require("app/routes"));
+
+app.use(
+  session({
+    name: "english_camp",
+    proxy: true,
+    resave: true,
+    secret: "english_camp.secrect", // session secret
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      secure: false /*Use 'true' without setting up HTTPS will result in redirect errors*/
+    }
+  })
+);
+
+require("config/passport")(passport);
+
+//PassportJS middleware
+app.use(passport.initialize());
+app.use(passport.session()); //persistent login sessions
+
+app.use((req, res, next) => {
+  res.locals.domain = config.domain
+  next()
+})
+app.use('/setup', require('app/routes/setup'))
+app.use("/", require("app/routes/homepage"));
+app.use('/admin', require('app/routes/adminpage'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  // next(createError(404));
-  res.render("404");
+  next(createError(404));
+  res.render("error");
 });
 
 // error handler
@@ -44,7 +73,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("500");
+  res.render("error");
 });
 
 module.exports = app;
