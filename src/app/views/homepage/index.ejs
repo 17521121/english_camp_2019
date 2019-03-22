@@ -21,6 +21,8 @@
 </head>
 
 <body>
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2&appId=1057102251148374&autoLogAppEvents=1"></script>    
   <nav class="navbar no-margin-bottom alt-font without-button">
     <div class="container navigation-menu">
       <div class="row">
@@ -33,7 +35,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="#home" class="navbar-brand inner-link"><img alt="" src="/images/logo-transaction.png"></a>
+          <a href="#home" class="navbar-brand inner-link"><img alt="" src="/homepage/images/logo-transaction.png"></a>
         </div>
         <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse col-md-10">
           <ul class="nav navbar-nav">
@@ -50,8 +52,8 @@
   </nav>
   <!-- slider -->
   <section id="_=_" class="no-padding parallax2 parallax-fix">
-    <img class="parallax-background-img" src="/images/event-img1.jpg" alt="" />
-    <div class="opacity-full bg-deep-blue2"></div>
+    <img class="parallax-background-img" src="/homepage/images/background.png" alt="" />
+    <div class="opacity-full bg-deep-englishcamp"></div>
     <div class="container full-screen position-relative">
 
       <div class="slider-typography text-center">
@@ -59,8 +61,8 @@
 
           <div class="slider-text-middle slider-typography-option6">
             <div class="logo-image-bonjour text-center custom-image">
-              <img alt="" src="/images/ava.png">
-              <a href="/users/login/facebook" class="highlight-button-white-border btn btn-medium button letter-spacing-1 inner-link margin-two no-margin-bottom no-margin-lr xs-margin-eleven xs-no-margin-top xs-no-margin-bottom xs-no-margin-lr text-center">Checking ngay!</a>
+              <img alt="" src="/homepage/images/logo.png">
+              <a href="/admin/users/login/facebook" class="highlight-button-white-border btn btn-medium button letter-spacing-1 inner-link margin-two no-margin-bottom no-margin-lr xs-margin-eleven xs-no-margin-top xs-no-margin-bottom xs-no-margin-lr text-center">Checking ngay!</a>
               </div>
             </div>
           </div>
@@ -83,8 +85,7 @@
             <div class="col-md-12 col-sm-12 text-center">
               <img src="<%- user.cover %>" alt="user-avatar">
 
-
-              <a class="highlight-button-black-border btn btn-medium button margin-ten no-margin-lr inner-link" href="#schedule">
+              <a class="highlight-button-black-border btn btn-medium button margin-ten no-margin-lr inner-link" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<%- domain %>?id=<%- user._id %>">
                 Share facebook
               </a>
               <a class="highlight-button-black-border btn btn-medium button margin-ten no-margin-lr inner-link" href="#schedule">
@@ -109,7 +110,7 @@
       <div class="row">
         <div class="margin-fifteen no-margin-lr no-margin-bottom xs-text-center clearfix">
           <div class="col-md-5 col-sm-12 text-center">
-            <img src="/images/logo-event.png" alt="logo-event-bonjour-uit">
+            <img src="/homepage/images/logo.png" alt="logo-event-bonjour-uit">
             <a class="highlight-button-black-border btn btn-medium button margin-ten no-margin-lr inner-link" href="#schedule">
               Nội dung chương trình
             </a>
@@ -160,7 +161,7 @@
       </div>
     </div>
   </section>
-  <section class="wow fadeIn fix-background" style="background-image:url('/images/event-img2.jpg');">
+  <section class="wow fadeIn fix-background" style="background-image:url('/homepage/images/event-img2.jpg');">
     <div class="opacity-full bg-deep-bonjour-blue"></div>
     <div class="container position-relative">
       <div class="row">
@@ -174,12 +175,12 @@
             </span>
           <span class="title-extra-large-4 alt-font bonjour-text-blue text-uppercase font-weight-600 margin-one no-margin-bottom no-margin-lr display-block xs-title-extra-large">
             <!-- timer -->
-            <div id="counter-event" enddate="2018/09/15 08:00:00" class="bonjour-text-blue text-center alt-font center-col margin-eight no-margin-lr no-margin-bottom"></div>
+            <div id="counter-event" enddate="2019/04/20 08:00:00" class="bonjour-text-blue text-center alt-font center-col margin-eight no-margin-lr no-margin-bottom"></div>
             <!-- end timer -->
           </span>
           <br><br>
           <a class="highlight-button-blue btn btn-medium button letter-spacing-1 inner-link" data-toggle="modal" data-target="#register4Modal">
-            Es-tu prêt???</a>
+            Are you ready?</a>
         </div>
       </div>
     </div>
@@ -204,7 +205,7 @@
       <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12 text-center architecture-bio overflow-hidden xs-no-padding">
           <div class="architecture-img">
-            <img src="/images/bonjour-1.jpg" alt="" />
+            <img src="/homepage/images/bonjour-1.jpg" alt="" />
           </div>
           <div class="architecture-details bg-bonjour-blue text-left padding-fifteen sm-padding-eleven center-col md-width-90 xs-width-90">
             <span class="text-large font-weight-600 letter-spacing-1 alt-font white-text text-uppercase display-block">FÊTE MUSICALE DE L'UIT</span>
@@ -216,7 +217,7 @@
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12 text-center architecture-bio overflow-hidden xs-no-padding">
           <div class="architecture-img">
-            <img src="/images/bonjour-2.jpg" alt="" />
+            <img src="/homepage/images/bonjour-2.jpg" alt="" />
           </div>
           <div class="architecture-details bg-bonjour-blue text-left padding-fifteen sm-padding-eleven center-col md-width-90 xs-width-90">
             <span class="text-large font-weight-600 letter-spacing-1 alt-font white-text text-uppercase display-block">TOUR DE FRANCE EN UIT</span>
@@ -228,7 +229,7 @@
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12 text-center architecture-bio overflow-hidden xs-no-padding">
           <div class="architecture-img">
-            <img src="/images/bonjour-3.jpg" alt="" />
+            <img src="/homepage/images/bonjour-3.jpg" alt="" />
           </div>
           <div class="architecture-details bg-bonjour-blue text-left padding-fifteen sm-padding-eleven center-col md-width-90 xs-width-90">
             <span class="text-large font-weight-600 letter-spacing-1 alt-font white-text text-uppercase display-block">
@@ -242,7 +243,7 @@
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12 text-center architecture-bio overflow-hidden xs-no-padding">
           <div class="architecture-img">
-            <img src="/images/event-img18.jpg" alt="Ca sĩ khách mời" style="width: 100%; padding-top: 30px" />
+            <img src="/homepage/images/event-img18.jpg" alt="Ca sĩ khách mời" style="width: 100%; padding-top: 30px" />
           </div>
         </div>
       </div>
@@ -345,7 +346,7 @@
     </div>
   </section>
 
-  <section id="sponsors" class="fix-background-webkit fix-background" style="background-image:url('/images/event-img3.jpg');">
+  <section id="sponsors" class="fix-background-webkit fix-background" style="background-image:url('/homepage/images/event-img3.jpg');">
     <div class="opacity-full bg-deep-bonjour-blue"></div>
     <div class="container position-relative">
       <div class="row">
@@ -353,14 +354,14 @@
           <span class="title-medium alt-font font-weight-700 text-uppercase bonjour-text-blue display-block sm-title-large"><span
               class="bonjour-text-blue">—</span> Tài trợ Bạc</span>
           <a href="#">
-            <img class="sm-margin-thirteen sm-no-margin-lr" src="/images/logo/youthdev.png" alt="youth dev" style="max-width: 70%" />
+            <img class="sm-margin-thirteen sm-no-margin-lr" src="/homepage/images/logo/youthdev.png" alt="youth dev" style="max-width: 70%" />
           </a>
         </div>
         <div class="col-md-6 col-sm-6 text-center">
           <span class="title-medium alt-font font-weight-700 text-uppercase bonjour-text-blue display-block sm-title-large"><span
               class="bonjour-text-blue">—</span> Tài trợ Đồng</span>
           <a href="#">
-            <img class="sm-margin-thirteen sm-no-margin-lr" src="/images/logo/neo.png" alt="neo" style="max-width: 70%" />
+            <img class="sm-margin-thirteen sm-no-margin-lr" src="/homepage/images/logo/neo.png" alt="neo" style="max-width: 70%" />
           </a>
         </div>
       </div>
@@ -377,21 +378,21 @@
           <div class="col-md-4 col-sm-4 text-center">
             <div class="client-logo sm-display-inline">
               <a href="#">
-                <img class="sm-margin-thirteen sm-no-margin-lr" src="/images/logo/logitech.png" alt="logitech" style="max-width: 70%" />
+                <img class="sm-margin-thirteen sm-no-margin-lr" src="/homepage/images/logo/logitech.png" alt="logitech" style="max-width: 70%" />
               </a>
             </div>
           </div>
           <div class="col-md-4 col-sm-4 text-center">
             <div class="client-logo sm-display-inline">
               <a href="#">
-                <img class="sm-margin-thirteen sm-no-margin-lr" src="/images/logo/ucchau.png" alt="Úc châu" style="max-width: 70%" />
+                <img class="sm-margin-thirteen sm-no-margin-lr" src="/homepage/images/logo/ucchau.png" alt="Úc châu" style="max-width: 70%" />
               </a>
             </div>
           </div>
           <div class="col-md-4 col-sm-4 text-center">
               <div class="client-logo sm-display-inline">
                 <a href="#">
-                  <img class="sm-margin-thirteen sm-no-margin-lr" src="/images/logo/vnpt.png" alt="vnpt" style="max-width: 70%" />
+                  <img class="sm-margin-thirteen sm-no-margin-lr" src="/homepage/images/logo/vnpt.png" alt="vnpt" style="max-width: 70%" />
                 </a>
               </div>
             </div>
@@ -410,28 +411,28 @@
           <div class="col-md-3 col-sm-3 text-center">
             <div class="client-logo sm-display-inline">
               <a href="#">
-                <img class="sm-margin-thirteen sm-no-margin-lr" src="/images/logo/lotte.png" alt="Lotte cinema" style="max-width: 70%" />
+                <img class="sm-margin-thirteen sm-no-margin-lr" src="/homepage/images/logo/lotte.png" alt="Lotte cinema" style="max-width: 70%" />
               </a>
             </div>
           </div>
           <div class="col-md-3 col-sm-3 text-center">
             <div class="client-logo sm-display-inline">
               <a href="#">
-                <img class="sm-margin-thirteen sm-no-margin-lr" src="/images/logo/viettel.png" alt="Viettel" style="max-width: 70%" />
+                <img class="sm-margin-thirteen sm-no-margin-lr" src="/homepage/images/logo/viettel.png" alt="Viettel" style="max-width: 70%" />
               </a>
             </div>
           </div>
           <div class="col-md-3 col-sm-3 text-center">
             <div class="client-logo sm-display-inline">
               <a href="#">
-                <img class="sm-margin-thirteen sm-no-margin-lr" src="/images/logo/wallstreet.png" alt="Wall Street English" style="max-width: 70%" />
+                <img class="sm-margin-thirteen sm-no-margin-lr" src="/homepage/images/logo/wallstreet.png" alt="Wall Street English" style="max-width: 70%" />
               </a>
             </div>
           </div>
           <div class="col-md-3 col-sm-3 text-center">
             <div class="client-logo sm-display-inline">
               <a href="#">
-                <img class="sm-margin-thirteen sm-no-margin-lr" src="/images/logo/acb.png" alt="Ngân hàng ACB" style="max-width: 70%" />
+                <img class="sm-margin-thirteen sm-no-margin-lr" src="/homepage/images/logo/acb.png" alt="Ngân hàng ACB" style="max-width: 70%" />
               </a>
             </div>
           </div>
@@ -457,49 +458,49 @@
               <ul class="masonry-items grid lightbox-gallery">
                 <li>
                   <figure class="overflow-hidden">
-                    <a href="/images/event-img8.jpg" title="Quẩy lên thôi"><img src="/images/event-img8.jpg"
+                    <a href="/homepage/images/event-img8.jpg" title="Quẩy lên thôi"><img src="/homepage/images/event-img8.jpg"
                         alt=""></a>
                   </figure>
                 </li>
                 <li>
                   <figure class="overflow-hidden">
-                    <a href="/images/event-img9.jpg" title="Put your hands up!"><img src="/images/event-img9.jpg"
+                    <a href="/homepage/images/event-img9.jpg" title="Put your hands up!"><img src="/homepage/images/event-img9.jpg"
                         alt="put your hands up"></a>
                   </figure>
                 </li>
                 <li>
                   <figure class="overflow-hidden">
-                    <a href="/images/event-img10.jpg" title="DJ Mie"><img src="/images/event-img10.jpg"
+                    <a href="/homepage/images/event-img10.jpg" title="DJ Mie"><img src="/homepage/images/event-img10.jpg"
                         alt="dj mie"></a>
                   </figure>
                 </li>
                 <li>
                   <figure class="overflow-hidden">
-                    <a href="/images/event-img11.jpg" title="Bí ẩn không"><img src="/images/event-img11.jpg"
+                    <a href="/homepage/images/event-img11.jpg" title="Bí ẩn không"><img src="/homepage/images/event-img11.jpg"
                         alt="bí ẩn không"></a>
                   </figure>
                 </li>
                 <li>
                   <figure class="overflow-hidden">
-                    <a href="/images/event-img12.jpg" title="Tuý âm"><img src="/images/event-img12.jpg"
+                    <a href="/homepage/images/event-img12.jpg" title="Tuý âm"><img src="/homepage/images/event-img12.jpg"
                         alt="tuý âm"></a>
                   </figure>
                 </li>
                 <li>
                   <figure class="overflow-hidden">
-                    <a href="/images/event-img13.jpg" title="Ban tổ chức nè ahihi!"><img src="/images/event-img13.jpg"
+                    <a href="/homepage/images/event-img13.jpg" title="Ban tổ chức nè ahihi!"><img src="/homepage/images/event-img13.jpg"
                         alt="bonjour"></a>
                   </figure>
                 </li>
                 <li>
                   <figure class="overflow-hidden">
-                    <a href="/images/event-img14.jpg" title="Han sara dễ thương nè"><img src="/images/event-img14.jpg"
+                    <a href="/homepage/images/event-img14.jpg" title="Han sara dễ thương nè"><img src="/homepage/images/event-img14.jpg"
                         alt="han sara"></a>
                   </figure>
                 </li>
                 <li>
                   <figure class="overflow-hidden">
-                    <a href="/images/event-img15.jpg" title="Các bạn có biết đánh DJ không?"><img src="/images/event-img15.jpg"
+                    <a href="/homepage/images/event-img15.jpg" title="Các bạn có biết đánh DJ không?"><img src="/homepage/images/event-img15.jpg"
                         alt="dj"></a>
                   </figure>
                 </li>
@@ -511,7 +512,7 @@
     </div>
   </section>
 
-  <section id="sponsors" class="fix-background fix-background-webkit" style="background-image:url('/images/event-img12.jpg');">
+  <section id="sponsors" class="fix-background fix-background-webkit" style="background-image:url('/homepage/images/event-img12.jpg');">
     <div class="opacity-full bg-deep-bonjour-blue"></div>
     <div class="container position-relative">
       <div class="row">
@@ -666,7 +667,7 @@
       </div>
     </div>
   </section>
-  <section id="contact" class="fix-background fix-background-webkit" style="background-image:url('/images/event-img16.jpg');">
+  <section id="contact" class="fix-background fix-background-webkit" style="background-image:url('/homepage/images/event-img16.jpg');">
     <div class="opacity-full bg-deep-bonjour-blue"></div>
     <div class="container position-relative">
       <div class="row">
@@ -700,7 +701,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-sm-12 center-col text-center">
-            <img alt="uit" src="/images/logo-uit.png">
+            <img alt="uit" src="/homepage/images/logo-uit.png">
           </div>
           <div class="col-md-12 col-sm-12 text-center">
             <span class="text-uppercase alt-font text-extra-small margin-two no-margin-lr no-margin-bottom display-block medium-gray-text">&COPY;
@@ -781,6 +782,9 @@
   <a href="javascript:;" class="scrollToTop"><i class="fa fa-angle-up"></i></a>
   <!-- end scroll to top -->
   <% include ./partials/scripts %>
+  <script>
+    if(location.hash=='#_=_')location.replace(location.href.split('#')[0]);
+  </script>
 </body>
 
 </html>
