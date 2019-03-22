@@ -1,5 +1,5 @@
 var router = require("express").Router();
 
-require('./logout')(router)
+router.get('/logout', require('./logout'))
 
 module.exports = router;

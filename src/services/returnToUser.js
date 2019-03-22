@@ -47,6 +47,6 @@ module.exports = {
     })
   },
   redirectLogin: (res) => {
-    return res.redirect('/users/login')
+    return res.redirect('/admin/users/login')
   }
 }

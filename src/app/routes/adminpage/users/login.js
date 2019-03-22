@@ -4,8 +4,8 @@ var router = require("express").Router();
 router.get("/", async (req, res, next) => {
   if(req.isAuthenticated()) {
     return res.redirect('/');
-  } 
-  return res.render("users/login");
+  }
+  return res.render("adminpage/users/login");
 });
 
 router.post(
@@ -22,7 +22,7 @@ router.post(
     } else {
       req.session.cookie.expires = false; // Cookie expires at end of session
     }
-    res.redirect("/");
+    res.redirect("/admin");
   }
 );
 
