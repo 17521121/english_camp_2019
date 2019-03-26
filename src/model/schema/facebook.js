@@ -28,6 +28,10 @@ var facebook = new mongoose.Schema({
   },
   cover: {
     type: String
+  },
+  isVerify: {
+    type: Boolean,
+    default: false,
   }
 });
 
