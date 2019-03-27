@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal-wrapper">
+<div class="modal-wrapper select-univeristy">
   <div class="modal">
     <div class="head">
       <a class="btn-close trigger" href="#">
@@ -10,6 +10,33 @@
       <div class="good-job">
         <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
         <h1>Good Job!</h1>
+        <!-- Split button -->
+        <!-- <div class="dropdown">
+          <button
+            class="btn btn-default dropdown-toggle"
+            type="button"
+            id="dropdownMenu1"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="true"
+          >
+            
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="background-color: white;">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div> -->
+        <form autocomplete="off" action="/set-university" method="POST">
+          <div class="autocomplete" style="width: 70%">
+            <input id="tags" type="text" name="university" placeholder="Bạn đang học trường nào?">
+          </div>
+          <input type="submit">
+        </form>
       </div>
     </div>
   </div>

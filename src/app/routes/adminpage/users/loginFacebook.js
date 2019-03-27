@@ -45,7 +45,7 @@ router.get('/callback',
       let coverLink = path.join(__dirname, "../../../public/covers", nameImage);
       console.log('coverLink', coverLink)
       // let coverLink = `src/app/public/covers/${nameImage}`
-      await images(__dirname + "/cover.jpg").draw(images(title).resize(400), 10, 10).save(coverLink);
+      await images(__dirname + "/boardingpass.png").draw(images(title).resize(130), 775, 98).save(coverLink);
       console.log('merge image successfull')
       // console.log(newImages)
       await mongoose.model('facebook').findByIdAndUpdate(req.user.data._id, { cover: `${config.domain}/covers/${nameImage}`, userAvatar: `${config.domain}/users/${nameImage}`})

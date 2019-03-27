@@ -6,8 +6,8 @@
   <title>Bonjour UIT 2018 - Ngày hội chào đón tân sinh viên</title>
   <meta property="og:title" content="Bonjour UIT 2018 - Ngày hội chào đón tân sinh viên" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://tuoitre.uit.edu.vn/bonjour/bonjour/images/logo-event.png"/>
-  <meta property="og:url" content="http://tuoitre.uit.edu.vn/bonjour/"/>
+  <meta property="og:image" content="<% if (user) { %><%- user.cover %><% } else { %><%- domain %>/homepage/images/logo.png<% } %>"/>
+  <meta property="og:url" content="<%- domain %>"/>
   <meta property="og:description" content="Ngày hội chào đón tân sinh viên. Trường ĐH Công nghệ Thông tin - ĐHQG-HCM" />
   <!-- description -->
   <meta name="description" content="Ngày hội chào đón tân sinh viên. Trường ĐH Công nghệ Thông tin - ĐHQG-HCM">
@@ -70,7 +70,7 @@
           <div class="slider-text-middle slider-typography-option6">
             <div class="logo-image-bonjour text-center custom-image">
               <img alt="" src="/homepage/images/logo.png">
-              <a href="/admin/users/login/facebook" class="highlight-button-white-border btn btn-medium button letter-spacing-1 inner-link margin-two no-margin-bottom no-margin-lr xs-margin-eleven xs-no-margin-top xs-no-margin-bottom xs-no-margin-lr text-center">Checking ngay!</a>
+                <a href="/admin/users/login/facebook" class="highlight-button-white-border btn btn-medium button letter-spacing-1 inner-link margin-two no-margin-bottom no-margin-lr xs-margin-eleven xs-no-margin-top xs-no-margin-bottom xs-no-margin-lr text-center">Checking ngay!</a>
               </div>
             </div>
           </div>
@@ -395,8 +395,7 @@
                         <td class="alt-font xs-display-block">
                           <span class="font-weight-600 display-block text-uppercase text-extra-large bonjour-text-blue">Final Round of English Debate Contest: Model ASEAN Youth Leaders’ Summit</span>
                           <span class="deep-gray-text text-medium">
-                            Smart Room 
-                            (Faculty of Medicine - Dentistry)
+                            Smart Room (Faculty of Medicine - Dentistry)
                           </span>
                           <!-- <span class="text-medium">DJ</span></td> -->
                       </tr>
@@ -559,13 +558,13 @@
                 </li>
                 <li>
                   <figure class="overflow-hidden">
-                    <a href="/homepage/images/event-img12.jpg" title="Tuý âm"><img src="/homepage/images/event-img12.jpg"
+                    <a href="/homepage/images/event-img19.jpeg" title="Tuý âm"><img src="/homepage/images/event-img19.jpeg"
                         alt="tuý âm"></a>
                   </figure>
                 </li>
                 <li>
                   <figure class="overflow-hidden">
-                    <a href="/homepage/images/event-img13.jpg" title="Ban tổ chức nè ahihi!"><img src="/homepage/images/event-img13.jpeg"
+                    <a href="/homepage/images/event-img13.jpeg" title="Ban tổ chức nè ahihi!"><img src="/homepage/images/event-img13.jpeg"
                         alt="bonjour"></a>
                   </figure>
                 </li>
@@ -577,7 +576,7 @@
                 </li>
                 <li>
                   <figure class="overflow-hidden">
-                    <a href="/homepage/images/event-img15.jpg" title="Các bạn có biết đánh DJ không?"><img src="/homepage/images/event-img15.jpeg"
+                    <a href="/homepage/images/event-img15.jpeg" title="Các bạn có biết đánh DJ không?"><img src="/homepage/images/event-img15.jpeg"
                         alt="dj"></a>
                   </figure>
                 </li>
@@ -588,163 +587,8 @@
       </div>
     </div>
   </section>
-
-  <section id="sponsors" class="fix-background fix-background-webkit" style="background-image:url('/homepage/images/event-img12.jpg');">
-    <div class="opacity-full bg-deep-bonjour-blue"></div>
-    <div class="container position-relative">
-      <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-12 xs-text-center xs-margin-fifteen xs-no-margin-lr xs-no-margin-top">
-          <div class="col-md-4 col-sm-5 col-xs-12 no-padding">
-            <i class="icon-ribbon bonjour-text-blue title-extra-large-3"></i>
-          </div>
-          <div class="col-md-8 col-sm-7 col-xs-12 text-left xs-text-center ">
-            <span class="timer alt-font font-weight-600 white-text title-extra-large display-block" data-to="10000000"
-              data-speed="3000">vnđ</span>
-            <span class="text-uppercase alt-font text-small white-text letter-spacing-1">Tổng giá trị giải thưởng</span>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-6 xs-text-center xs-margin-fifteen xs-no-margin-lr xs-no-margin-top">
-          <div class="col-md-4 col-sm-5 col-xs-12 no-padding">
-            <i class="icon-megaphone bonjour-text-blue title-extra-large-3"></i>
-          </div>
-          <div class="col-md-8 col-sm-7 col-xs-12 text-left xs-text-center ">
-            <span class="timer alt-font font-weight-600 white-text title-extra-large display-block" data-to="4"
-              data-speed="3000"></span>
-            <span class="text-uppercase alt-font text-small white-text letter-spacing-1">Sự kiện lớn</span>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-6 xs-text-center ">
-          <div class="col-md-4 col-sm-5 col-xs-12 no-padding">
-            <i class="icon-profile-male bonjour-text-blue title-extra-large-3"></i>
-          </div>
-          <div class="col-md-8 col-sm-7 col-xs-12 text-left xs-text-center ">
-            <span class="timer alt-font font-weight-600 white-text title-extra-large display-block" data-to="990"
-              data-speed="3000"></span>
-            <span class="text-uppercase alt-font text-small white-text letter-spacing-1">Số người tham dự</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="register" class="wow fadeIn bg-main-page">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-sm-12 text-center">
-          <span class="title-medium alt-font font-weight-700 text-uppercase bonjour-text-blue display-block sm-title-large"><span
-              class="bonjour-text-blue">—</span> Đăng ký tham gia</span>
-        </div>
-      </div>
-      <div class="row">
-        <div class="pricing margin-seventeen no-margin-bottom no-margin-lr clearfix">
-          <!-- features item -->
-          <div class="col-md-3 col-sm-6 col-xs-12 sm-margin-seven sm-no-margin-lr sm-no-margin-top">
-            <div class="text-center pricing-box">
-              <div class="pricing-price bg-bonjour-blue">
-                <h3 class="title-extra-large-2 white-text alt-font">Miễn phí</h3>
-              </div>
-              <div class="pricing-title bg-bonjour-blue-dark">
-                <span class="white-text text-large text-uppercase alt-font">Cơ bản</span>
-              </div>
-              <div class="pricing-features">
-                <ul>
-                  <li>1 người</li>
-                  <li>FÊTE MUSICALE DE L'UIT</li>
-                  <li>DJ CONCERT</li>
-                </ul>
-              </div>
-              <div class="pricing-action">
-                <button type="button" class="btn btn-primary highlight-button-dark btn btn-small button no-margin inner-link"
-                  data-toggle="modal" data-target="#register5Modal">
-                  Đăng ký
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- end features item -->
-          <!-- features item -->
-          <div class="col-md-3 col-sm-6 col-xs-12 sm-margin-seven sm-no-margin-lr sm-no-margin-top">
-            <div class="text-center pricing-box">
-              <div class="pricing-price bg-bonjour-red">
-                <h3 class="title-extra-large-2 white-text alt-font">400.000</h3>
-              </div>
-              <div class="pricing-title bg-bonjour-red-dark">
-                <span class="white-text text-large text-uppercase alt-font">Chạy tập thể</span>
-              </div>
-              <div class="pricing-features">
-                <ul>
-                  <li>5 người</li>
-                  <li>FÊTE MUSICALE DE L'UIT</li>
-                  <li>TOUR DE FRANCE EN UIT</li>
-                  <li>DJ CONCERT</li>
-                </ul>
-              </div>
-              <div class="pricing-action">
-                <button type="button" class="btn btn-primary highlight-button-dark btn btn-small button no-margin inner-link"
-                  data-toggle="modal" data-target="#register2Modal">
-                  Đăng ký
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- end features item -->
-          <!-- features item -->
-          <div class="col-md-3 col-sm-6 col-xs-12 sm-margin-seven sm-no-margin-lr sm-no-margin-top">
-            <div class="text-center pricing-box">
-              <div class="pricing-price bg-bonjour-blue">
-                <h3 class="title-extra-large-2 white-text alt-font">90.000</h3>
-              </div>
-              <div class="pricing-title bg-bonjour-blue-dark">
-                <span class="white-text text-large text-uppercase alt-font">Chạy bộ</span>
-              </div>
-              <div class="pricing-features">
-                <ul>
-                  <li>1 người</li>
-                  <li>FÊTE MUSICALE DE L'UIT</li>
-                  <li>TOUR DE FRANCE EN UIT</li>
-                  <li>DJ CONCERT</li>
-                </ul>
-              </div>
-              <div class="pricing-action">
-                <button type="button" class="btn btn-primary highlight-button-dark btn btn-small button no-margin inner-link"
-                  data-toggle="modal" data-target="#register1Modal">
-                  Đăng ký
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- end features item -->
-          <!-- features item -->
-          <div class="col-md-3 col-sm-6 col-xs-12 sm-margin-seven sm-no-margin-lr sm-no-margin-top">
-            <div class="text-center pricing-box">
-              <div class="pricing-price bg-bonjour-blue">
-                <h3 class="title-extra-large-2 white-text alt-font">Từ 65.000</h3>
-              </div>
-              <div class="pricing-title bg-bonjour-blue-dark">
-                <span class="white-text text-large text-uppercase alt-font">Ăn uống</span>
-              </div>
-              <div class="pricing-features">
-                <ul>
-                  <li>1 người</li>
-                  <li>FÊTE MUSICALE DE L'UIT</li>
-                  <li>LE BUFFET DE L'UIT</li>
-                  <li>DJ CONCERT</li>
-                </ul>
-              </div>
-              <div class="pricing-action">
-                <button type="button" class="btn btn-primary highlight-button-dark btn btn-small button no-margin inner-link"
-                  data-toggle="modal" data-target="#register3Modal">
-                  Đăng ký
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- end features item -->
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="contact" class="fix-background fix-background-webkit" style="background-image:url('/homepage/images/event-img16.jpg');">
+  
+  <section id="contact" class="fix-background fix-background-webkit" style="background-image:url('/homepage/images/footer.jpg');">
     <div class="opacity-full bg-deep-bonjour-blue"></div>
     <div class="container position-relative">
       <div class="row">
@@ -789,78 +633,44 @@
     </section>
   </footer>
 
-  <!-- Register 1 -->
-  <div class="modal fade" id="register1Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body" style="height: 80vh;">
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdO9bJK7eb3QNRmIqejL1KxDDMzstK2Tm_LOCjWCGsKYZUScA/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-  <!-- Register 1 end -->
-
-  <!-- Register 2 -->
-  <div class="modal fade" id="register2Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body" style="height: 80vh;">
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf7ZvYZf4z23gKbZxf5fSQF9gEWdkFh5pVlQpmH6SEerl-gYA/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Register 2 end -->
-
-  <!-- Register 3 -->
-  <div class="modal fade" id="register3Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body" style="height: 80vh;">
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdHwBk8By02Ji4w-f3W0pu6QuqA9zlIcGK1TMlN3bdaFiHQUg/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Register 3 end -->
-
-  <!-- Register 4 -->
-  <div class="modal fade" id="register4Modal" tabindex="-1" role="dialog" aria-labelledby="#register"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/t_dWaLoTodU?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Register 4 end -->
-
-  <!-- Register 5 -->
-  <div class="modal fade" id="register5Modal" tabindex="-1" role="dialog" aria-labelledby="#register"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body" style="height: 80vh;">
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfAqQByUWIiRxPmhC6NEhuHq0M9-uMgTkyJh7lT6DWrAvGrIw/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Register 5 end -->
-
   <!-- scroll to top -->
   <a href="javascript:;" class="scrollToTop"><i class="fa fa-angle-up"></i></a>
   <!-- end scroll to top -->
   <% include ./partials/scripts %>
+  <% include ./selectUniversity %>
   <script>
+    var university = [];
+    var temp = [];
     if(location.hash=='#_=_')location.replace(location.href.split('#')[0]);
+    <% if (user) { %>
+      <% if(!user.isVerify) { %>
+    $(document).ready(function() {
+    
+      $(".select-univeristy").toggleClass("open");
+      $(".page-wrapper").toggleClass("blur-it");
+      if (university) {
+        $.ajax({
+          url: '/university',
+          method: "GET",
+          success: (data) => {
+            console.log(data)
+            university = data.data.university
+            data.data.university.map(item => {
+              console.log(item)
+              temp.push(item.name)
+            })
+          }
+        })
+      }
+      return false;
+      
+    });
+    <% }} %>
+  </script>
+  <script>
+    $("#tags").autocomplete({
+      source: temp
+    });
   </script>
 </body>
 
