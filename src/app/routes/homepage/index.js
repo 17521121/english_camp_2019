@@ -6,10 +6,11 @@ var { success, errorWithMess, empty } = require('services/returnToUser');
 router.get('/', async (req, res, next) => {
     try {
         if (!_.isEmpty(req.query)) {
-            let user = await mongoose.model('facebook').findById(_.get(req.query.id));
+            let user = await mongoose.model('facebook').findById(req.query.id);
             if (_.isEmpty(user)) {
                 throw Error("Not users")
             }
+            console.log(user)
             return res.render('homepage/index', { user: user })
         } else {
             return res.render('homepage/index', { user: req.user ? req.user : null })
