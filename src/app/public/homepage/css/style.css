@@ -5509,3 +5509,33 @@ footer img {
   background: url(img/quick-question.png) 14px center no-repeat
     rgba(50, 50, 50, 0.8);
 }
+
+.hbtn {
+  position: relative;
+  margin-right: 5px;
+  padding: 8px 24px;
+  font-size: 15px;
+  color: #ffffff;
+  border-radius: 25px;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.hbtn.hbtn-lg {
+  padding: 10px 22px;
+  font-size: 18px;
+}
+
+.hbtn.hbtn-primary {
+  background-color: #ffc600;
+  color: #0c090d;
+}
+
+.hbtn.hbtn-primary:hover, .hbtn.hbtn-primary:focus {
+  text-decoration: none;
+  background-color: #e6b200;
+}

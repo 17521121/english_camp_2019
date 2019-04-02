@@ -18,15 +18,18 @@ router.get("/", async (req, res, next) => {
       },
       { $limit: 6 }
     ]);
-    console.log(university);
+    let facebookCount = await mongoose.model('facebook').count();
+    console.log(university, facebookCount);
     return res.render("homepage/index", {
       user: req.user ? req.user : null,
-      university
+      university,
+      facebookCount
     });
   } catch (err) {
     return res.render("homepage/index", {
       user: req.user ? req.user : null,
-      university
+      university,
+      facebookCount
     });
   }
 });
@@ -60,15 +63,17 @@ router.get("/:id", async (req, res, next) => {
       { $limit: 6 }
     ]);
     let user = await mongoose.model("facebook").findById(req.query.id);
+    let facebookCount = await mongoose.model('facebook').count();
     if (_.isEmpty(user)) {
       throw Error("Not users");
     }
     console.log(user);
-    return res.render("homepage/index", { user: user, university });
+    return res.render("homepage/index", { user: user, university, facebookCount });
   } catch (err) {
     return res.render("homepage/index", {
       user: req.user ? req.user : null,
-      university
+      university,
+      facebookCount
     });
   }
 });
@@ -86,9 +91,9 @@ router.post("/set-university", async (req, res, next) => {
     await mongoose
       .model("facebook")
       .findByIdAndUpdate(req.user._id, { isVerify: true });
-    return empty(res, "Done");
+    return res.redirect(`/${req.user._id}`)
   } else {
-    return empty(res, "Done");
+    return res.redirect(`/${req.user._id}`)
   }
 });
 
