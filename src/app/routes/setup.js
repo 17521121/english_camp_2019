@@ -251,9 +251,6 @@ router.get("/", async (req, res, next) => {
     {
       university: "HV Hành chính Quốc gia Phân viện tại TP. HCM",
       logo: "/homepage/images/university/59.png"
-    },
-    {
-      university: ""
     }
   ];
   await univeristy.map(async item => {
