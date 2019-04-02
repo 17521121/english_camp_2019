@@ -62,7 +62,7 @@ router.get("/:id", async (req, res, next) => {
       },
       { $limit: 6 }
     ]);
-    let user = await mongoose.model("facebook").findById(req.query.id);
+    let user = await mongoose.model("facebook").findById(req.params.id);
     let facebookCount = await mongoose.model('facebook').count();
     if (_.isEmpty(user)) {
       throw Error("Not users");
