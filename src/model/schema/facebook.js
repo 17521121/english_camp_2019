@@ -32,6 +32,10 @@ var facebook = new mongoose.Schema({
   isVerify: {
     type: Boolean,
     default: false,
+  },
+  score: {
+    type: Number,
+    default: null
   }
 });
 

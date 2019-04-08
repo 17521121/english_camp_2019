@@ -98,6 +98,9 @@
               <a class="highlight-button-black-border btn btn-medium button margin-ten no-margin-lr inner-link" href="#schedule">
                 Tên người tham dự: <%- user.name %>
               </a>
+              <button type="button" class="highlight-button-black-border btn btn-medium button margin-ten no-margin-lr inner-link" data-toggle="modal" data-target="#questions">
+                Test English
+              </button>
             </div>
             
           </div>
@@ -639,7 +642,17 @@
   <a href="javascript:;" class="scrollToTop"><i class="fa fa-angle-up"></i></a>
   <!-- end scroll to top -->
   <% include ./partials/scripts %>
+  <% include ./questions %>
   <% include ./selectUniversity %>
+  <script>
+    $('.questionsModal').on('click', function() {
+      $('.questions').toggleClass("open");
+    })
+    $('.questionsModalClose').on('click', function() {
+      console.log("afaw");
+      $('.questions').removeClass('open in');
+    })
+  </script>
   <script>
     var university = [];
     var temp = [];
