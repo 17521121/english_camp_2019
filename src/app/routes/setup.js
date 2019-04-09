@@ -82,7 +82,7 @@ router.get("/", async (req, res, next) => {
     },
     {
       university: "Trường CĐ Văn hóa – Nghệ thuật TP. HCM",
-      logo: "/homepage/images/university/"
+      logo: "/homepage/images/university/hsv.png"
     },
     {
       university: "Trường CĐ Xây dựng TP. HCM",
@@ -218,7 +218,7 @@ router.get("/", async (req, res, next) => {
     },
     {
       university: "Trường ĐH Tôn Đức Thắng",
-      logo: "/homepage/images/university/"
+      logo: "/homepage/images/university/tdt.png"
     },
     {
       university: "Trường ĐH Thể dục Thể thao TP. HCM",
@@ -238,11 +238,11 @@ router.get("/", async (req, res, next) => {
     },
     {
       university: "ĐH Y dược TP. HCM",
-      logo: "/homepage/images/university/"
+      logo: "/homepage/images/university/yds.png"
     },
     {
       university: "Trường ĐH Y Khoa Phạm Ngọc Thạch",
-      logo: "/homepage/images/university/"
+      logo: "/homepage/images/university/pnt.jpg"
     },
     {
       university: "HV Hàng không Việt Nam",
