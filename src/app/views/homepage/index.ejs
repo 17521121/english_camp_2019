@@ -6,7 +6,7 @@
   <title>English Camp 2019 - Ngày hội sinh viên với ngoại ngữ</title>
   <meta property="og:title" content="English Camp 2019 - Ngày hội sinh viên với ngoại ngữ" />
   <meta property="og:type" content="website" />
-  <meta property="fb:app_id" content="2685712168121918"/>
+  <meta property="fb:app_id" content="1057102251148374"/>
   <meta property="og:image:width" content="947" />
   <meta property="og:image:height" content="461" />
   <meta property="og:image" content="<% if (user) { %><%- user.cover %><% } else { %><%- domain %>/homepage/images/logo.png<% } %>"/>
@@ -646,13 +646,14 @@
   <% include ./selectUniversity %>
   <% include ./suggest %>
   <script>
-    
-    <% if(user.score >=13) { %>
-      $('#level1').modal('show');
-    <% } else if (user.score >= 6) { %>
-      $('#level2').modal('show');
-    <% } else { %>
-      $('#level3').modal();
+    <% if(user) { %>
+      <% if(user.score >=13) { %>
+        $('#level1').modal('show');
+      <% } else if (user.score >= 6) { %>
+        $('#level2').modal('show');
+      <% } else { %>
+        $('#level3').modal();
+      <% } %>
     <% } %>
   </script>
   <script>
