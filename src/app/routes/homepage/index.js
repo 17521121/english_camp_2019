@@ -18,18 +18,32 @@ router.get("/", async (req, res, next) => {
       },
       { $limit: 6 }
     ]);
+    let universityMore = await mongoose.model("university").aggregate([
+      {
+        $project: {
+          name: 1,
+          image: 1,
+          facebookId_count: { $size: { $ifNull: ["$facebookId", []] } }
+        }
+      },
+      {
+        $sort: { facebookId_count: -1 }
+      },
+    ]);
     let facebookCount = await mongoose.model('facebook').count();
     console.log(university, facebookCount);
     return res.render("homepage/index", {
       user: req.user ? req.user : null,
       university,
-      facebookCount
+      facebookCount,
+      universityMore
     });
   } catch (err) {
     return res.render("homepage/index", {
       user: req.user ? req.user : null,
       university,
-      facebookCount
+      facebookCount,
+      universityMore
     });
   }
 });
@@ -77,6 +91,18 @@ router.get("/:id", async (req, res, next) => {
       },
       { $limit: 6 }
     ]);
+    let universityMore = await mongoose.model("university").aggregate([
+      {
+        $project: {
+          name: 1,
+          image: 1,
+          facebookId_count: { $size: { $ifNull: ["$facebookId", []] } }
+        }
+      },
+      {
+        $sort: { facebookId_count: -1 }
+      },
+    ]);
     let facebookCount = await mongoose.model('facebook').count();
     console.log(university, facebookCount);
     let user = await mongoose.model("facebook").findById(req.params.id);
@@ -84,12 +110,13 @@ router.get("/:id", async (req, res, next) => {
       throw Error("Not users");
     }
     console.log(user);
-    return res.render("homepage/index", { user: user, university, facebookCount });
+    return res.render("homepage/index", { user: user, university, facebookCount, universityMore });
   } catch (err) {
     return res.render("homepage/index", {
       user: req.user ? req.user : null,
       university,
-      facebookCount
+      facebookCount,
+      universityMore
     });
   }
 });

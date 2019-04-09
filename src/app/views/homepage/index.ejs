@@ -149,7 +149,9 @@
 
                 <br />
               <% }) %>
-
+              <button type="button" class="text-center highlight-button-black-border btn btn-medium button margin-ten no-margin-lr inner-link" data-toggle="modal" data-target="#universityMore">
+                Xem thêm
+              </button>
             </div>
           </div>
         </div>
@@ -645,6 +647,7 @@
   <% include ./questions %>
   <% include ./selectUniversity %>
   <% include ./suggest %>
+  <% include ./university %>
   <script>
     <% if(user) { %>
       <% if(user.score >=13) { %>
