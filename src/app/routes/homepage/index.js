@@ -73,12 +73,13 @@ router.get("/:id", async (req, res, next) => {
         }
       },
       {
-        $sort: { facebookId_count: 1 }
+        $sort: { facebookId_count: -1 }
       },
       { $limit: 6 }
     ]);
-    let user = await mongoose.model("facebook").findById(req.params.id);
     let facebookCount = await mongoose.model('facebook').count();
+    console.log(university, facebookCount);
+    let user = await mongoose.model("facebook").findById(req.params.id);
     if (_.isEmpty(user)) {
       throw Error("Not users");
     }
