@@ -47,6 +47,21 @@ router.get("/university", async (req, res, next) => {
   }
 });
 
+router.post('/questions', async (req, res, next) => {
+  try {
+    let i = 0;
+    console.log(req.body)
+    await Object.keys(req.body).forEach((key) => {
+      if (req.body[key] == 'true') i++
+    })
+    console.log(i)
+    await mongoose.model('facebook').findByIdAndUpdate(req.user._id, { score: i })
+    return res.redirect(`/${req.user._id}`)
+  } catch (err) {
+    return res.redirect(`/${req.user._id}`)
+  }
+})
+
 router.get("/:id", async (req, res, next) => {
   try {
     let university = await mongoose.model("university").aggregate([

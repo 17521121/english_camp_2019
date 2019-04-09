@@ -644,14 +644,16 @@
   <% include ./partials/scripts %>
   <% include ./questions %>
   <% include ./selectUniversity %>
+  <% include ./suggest %>
   <script>
-    $('.questionsModal').on('click', function() {
-      $('.questions').toggleClass("open");
-    })
-    $('.questionsModalClose').on('click', function() {
-      console.log("afaw");
-      $('.questions').removeClass('open in');
-    })
+    
+    <% if(user.score >=13) { %>
+      $('#level1').modal('show');
+    <% } else if (user.score >= 6) { %>
+      $('#level2').modal('show');
+    <% } else { %>
+      $('#level3').modal();
+    <% } %>
   </script>
   <script>
     var university = [];
