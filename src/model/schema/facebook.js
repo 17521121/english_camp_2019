@@ -35,7 +35,7 @@ var facebook = new mongoose.Schema({
   },
   score: {
     type: Number,
-    default: null
+    default: 0
   }
 });
 
