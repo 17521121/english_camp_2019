@@ -651,7 +651,7 @@
         $('#level1').modal('show');
       <% } else if (user.score >= 6) { %>
         $('#level2').modal('show');
-      <% } else { %>
+      <% } else if (user.score > 0) { %>
         $('#level3').modal();
       <% } %>
     <% } %>
