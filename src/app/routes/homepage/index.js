@@ -103,6 +103,7 @@ router.post("/set-university", async (req, res, next) => {
         }
       }
     );
+    console.log(await mongoose.model('university').findOne({ name: req.body.university }))
     await mongoose
       .model("facebook")
       .findByIdAndUpdate(req.user._id, { isVerify: true });
