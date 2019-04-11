@@ -13,4 +13,6 @@ router.get('/', async (req, res, next) => {
     return res.render('adminpage/index')
 })
 
+router.use('/facebook', require('./facebook'))
+
 module.exports = router;
