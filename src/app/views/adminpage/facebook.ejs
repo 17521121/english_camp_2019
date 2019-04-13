@@ -262,8 +262,8 @@
                                     <table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                         <tr>
+                                            <th>STT</th>
                                             <th>Name</th>
-                                            <th>Email</th>
                                             <th>User Avatar</th>
                                             <th>Score</th>
                                             <th>facebookId</th>
@@ -272,10 +272,10 @@
 
 
                                         <tbody>
-                                        <% facebooks.map(item => { %>
+                                        <% facebooks.map((item, index) => { %>
                                             <tr>
+                                                <td><%- index + 1 %></td>
                                                 <td><%- item.name %></td>
-                                                <td><%- item.email %></td>
                                                 <td>
                                                     <img src="<%- item.userAvatar %>" style="height: 100px;" />
                                                 </td>

@@ -32,8 +32,13 @@
           </ul>
         </div> -->
         <form autocomplete="off" action="/set-university" method="POST">
-          <div class="autocomplete" style="width: 70%">
-            <input id="tags" type="text" name="university" placeholder="Bạn đang học trường nào?">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Bạn đang học trường nào?</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="university">
+              <% universityMore.map(item => { %>
+                <option value="<%- item.name %>"><%- item.name %></option>
+              <% }) %>
+            </select>
           </div>
           <input type="submit">
         </form>
