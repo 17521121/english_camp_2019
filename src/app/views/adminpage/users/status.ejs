@@ -90,19 +90,6 @@
                   </thead>
                   <tbody>
 
-                    <tr>
-                      <td><img src="/adminpage/assets/images/profile.jpg" width="100" alt=""></td>
-                      <td>Nguyen Van A</td>
-                      <td>0</td>
-                      <td>1</td>
-                    </tr>
-                    <tr>
-                      <td><img src="/adminpage/assets/images/profile.jpg" width="100" alt=""></td>
-                      <td>Nguyen Van A</td>
-                      <td>0</td>
-                      <td>1</td>
-                    </tr>
-
                   </tbody>
                 </table>
               </div>
@@ -123,7 +110,80 @@
   <script>
     $(document).ready(function () {
       // Responsive Datatable
-      $("#datatable").DataTable();
+
+      var myData = [
+      {
+          "1": '<img src="/adminpage/assets/images/profile.jpg" width="100" alt="">',
+          "2": "Nguyen Van A",
+          "3": "0",
+          "4": "1"
+        }, {
+          "1": '<img src="/adminpage/assets/images/profile.jpg" width="100" alt="">',
+          "2": "Nguyen Van A",
+          "3": "0",
+          "4": "1"
+        }, {
+          "1": '<img src="/adminpage/assets/images/profile.jpg" width="100" alt="">',
+          "2": "Nguyen Van A",
+          "3": "0",
+          "4": "1"
+        }, {
+          "1": '<img src="/adminpage/assets/images/profile.jpg" width="100" alt="">',
+          "2": "Nguyen Van A",
+          "3": "0",
+          "4": "1"
+        }, {
+          "1": '<img src="/adminpage/assets/images/profile.jpg" width="100" alt="">',
+          "2": "Nguyen Van A",
+          "3": "0",
+          "4": "1"
+        }, {
+          "1": '<img src="/adminpage/assets/images/profile.jpg" width="100" alt="">',
+          "2": "Nguyen Van A",
+          "3": "0",
+          "4": "1"
+        }, {
+          "1": '<img src="/adminpage/assets/images/profile.jpg" width="100" alt="">',
+          "2": "Nguyen Van A",
+          "3": "0",
+          "4": "1"
+        }, {
+          "1": '<img src="/adminpage/assets/images/profile.jpg" width="100" alt="">',
+          "2": "Nguyen Van A",
+          "3": "0",
+          "4": "1"
+        }, {
+          "1": '<img src="/adminpage/assets/images/profile.jpg" width="100" alt="">',
+          "2": "Nguyen Van A",
+          "3": "0",
+          "4": "1"
+        },
+      ];
+      var myData2 = [
+        {
+          "1": '<img src="/adminpage/assets/images/eye.png" width="100" alt="">',
+          "2": "Ngsdfsdfsdfuyen Van A",
+          "3": "0fgdg",
+          "4": "1dfgdg"
+        }
+      ];
+
+      $('#datatable').dataTable({
+        data: myData,
+        columns: [
+          { mData: '1' },
+          { mData: '2' },
+          { mData: '3' },
+          { mData: '4' }
+        ]
+      });
+      setTimeout(function () {
+        $('#datatable').dataTable().fnClearTable();
+      }, 2000)
+      setTimeout(function () {
+        $('#datatable').dataTable().fnAddData(myData2);
+      }, 3000)
+
     });
     var socket = io.connect("");
     socket.on("Online-Offline", function (data) {
