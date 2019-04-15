@@ -21,6 +21,33 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+
+
+/**
+ * Socket IO
+ */
+var io = require("socket.io")(server);
+var num = 0;
+// tạo kết nối giữa client và server
+io.on("connection", function (socket) {
+  num++;
+  io.emit("Online-Offline", num);
+
+  socket.on("disconnect", function () {
+    num--;
+    if (num <= 0)
+      num = 0;
+    io.emit("Online-Offline", num);
+  });
+  socket.on("Online-Offline", function (data) {
+    io.emit("Online-Offline", num);
+  });
+});
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
 /**
  * Listen on provided port, on all network interfaces.
  */

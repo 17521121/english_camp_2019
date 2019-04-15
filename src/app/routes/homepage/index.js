@@ -2,7 +2,7 @@ var router = require("express").Router();
 var mongoose = require("mongoose");
 var _ = require("lodash");
 var { success, errorWithMess, empty } = require("services/returnToUser");
-
+var randomstring = require('randomstring')
 router.get("/", async (req, res, next) => {
   try {
     let university = await mongoose.model("university").aggregate([
@@ -140,5 +140,14 @@ router.post("/set-university", async (req, res, next) => {
     return res.redirect(`/${req.user._id}`)
   }
 });
+
+router.get('/checkin/:rands', async (req, res, next) => {
+  try {
+    return res.render('homepage/checkin')
+  }
+  catch(err) {
+    next();
+  }
+})
 
 module.exports = router;

@@ -6,7 +6,7 @@ router.get("/", async (req, res, next) => {
   let insert = {
     username: "ducnm98",
     password: "123",
-    roles: [IS_ADMIN],
+    roles: IS_ADMIN,
     fullname: "Nguyễn Minh Đức"
   };
   const saltRounds = 10;

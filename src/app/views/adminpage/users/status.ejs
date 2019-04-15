@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <% include ../partials/css %>
+
+  <style>
+    body,
+    html {
+      width: 100%;
+      height: 100%;
+      background-image: url('/adminpage/assets/images/sign-bg-01.svg');
+    }
+
+    .online {
+      position: absolute;
+      top: 0;
+      right: 0;
+      box-shadow: 0 0 4px 3px #50c249;
+      border-radius: 20px;
+      margin: 20px;
+    }
+
+    .online img {
+      float: left;
+    }
+
+    .online h3 {
+      margin: 0;
+      display: unset;
+      padding: 10px;
+    }
+
+    .my-title {
+      text-align: center;
+      font-size: 27px;
+      font-family: inherit;
+      margin: 20px 0 20px 0;
+      color: #2E9AFE;
+    }
+
+    .table-responsive {
+      margin-top: 70px;
+
+    }
+
+    #datatable td,
+    #datatable th {
+      text-align: center;
+      vertical-align: middle;
+    }
+  </style>
+
+  <link href="/adminpage/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="/adminpage/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body>
+  <header class="sign-up log-in">
+    <!-- <div class="bg">
+      <img class="wave-purple" src="/adminpage/assets/images/sign-bg-01.svg" alt="" />
+    </div> -->
+    <div class='online'>
+      <img src="/adminpage/assets/images/eye.png" alt="">
+      <h3 id='numOfOnline'>0</h3>
+    </div>
+    <div class="sign-up-content">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+
+            <div class="card-box table-responsive">
+
+              <h4 class="m-t-0 header-title my-title">QUẢN LÍ THÍ SINH</h4>
+              <div class="container" style="overflow-x: auto">
+
+                <table cellspacing="0" id="datatable" class="table table-hover table-bordered"
+                  style="width: 100%; min-width: 600px;">
+                  <thead>
+                    <tr>
+                      <th>Hình đại diện</th>
+                      <th>Tên User</th>
+                      <th>Số gian hàng đã tham gia</th>
+                      <th>Xếp hạng</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr>
+                      <td><img src="/adminpage/assets/images/profile.jpg" width="100" alt=""></td>
+                      <td>Nguyen Van A</td>
+                      <td>0</td>
+                      <td>1</td>
+                    </tr>
+                    <tr>
+                      <td><img src="/adminpage/assets/images/profile.jpg" width="100" alt=""></td>
+                      <td>Nguyen Van A</td>
+                      <td>0</td>
+                      <td>1</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- container -->
+    </div>
+
+  </header>
+  <% include ../partials/scripts %>
+  <script src="/adminpage/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="/adminpage/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <script src="../../socket.io/socket.io.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Responsive Datatable
+      $("#datatable").DataTable();
+    });
+    var socket = io.connect("");
+    socket.on("Online-Offline", function (data) {
+      document.getElementById('numOfOnline').innerText = data;
+    });
+    socket.emit("Online-Offline", 'connect');
+  </script>
+
+</body>
+
+</html>
