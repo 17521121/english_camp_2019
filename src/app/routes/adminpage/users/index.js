@@ -5,8 +5,19 @@ router.get('/logout', require('./logout'))
 
 router.get('/status', async (req, res, next) => {
   try {
-
-    return res.render('adminpage/users/status')
+    let qrcodes = await mongoose.model('qrcode').find({}, { '__v': 0, '_id': 0, 'staffId': 0})
+    // console.log(qrcodes)
+    return res.render('adminpage/users/status', { qrcodes: qrcodes })
+  }
+  catch (err) {
+    next();
+  }
+})
+router.post('/status/getData', async (req, res, next) => {
+  try {
+    let qrcodes = await mongoose.model('qrcode').find({}, { '__v': 0, '_id': 0, 'staffId': 0})
+    // console.log(qrcodes)
+    return res.render('adminpage/users/status', { qrcodes: qrcodes })
   }
   catch (err) {
     next();
@@ -24,6 +35,15 @@ router.get('/status/:id', async (req, res, next) => {
       else {
         await qrcode.staffId.push(req.user.position);
         qrcode.numOfJoiningStaff++;
+        //Cập nhật lại rank
+        let qrcodes = await mongoose.model('qrcode')
+        let i = qrcodes.count()
+        for (let j of qrcodes.find()) {
+          if (j != qrcode && j.numOfJoiningStaff < qrcode.numOfJoiningStaff) {
+            i--;
+          }
+        }
+        qrcode.rank = i;
         await qrcode.save();
         return res.send("Done");
       }
@@ -45,6 +65,9 @@ router.post('/status', async (req, res, next) => {
     let insert = { ...req.body }
     let qrcode = await mongoose.model('qrcode').create(insert)
     qrcode.numOfJoiningStaff = 1;
+    //Cập nhật rank:
+    qrcode.rank = await mongoose.model('qrcode').count();
+
     qrcode.staffId.push(req.user.position)
     await qrcode.save()
     return res.send("Done")

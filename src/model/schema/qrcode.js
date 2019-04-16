@@ -12,10 +12,6 @@ var qrcode = new mongoose.Schema({
     // required: true,
     type: String
   },
-  isValid: {
-    // required: true,
-    type: Boolean
-  },
   university: {
     type: String
   },

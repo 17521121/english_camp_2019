@@ -54,11 +54,7 @@
   <script src="socket.io/socket.io.js"></script>
   <script>
     var socket = io.connect("");
-    socket.on("Online-Offline", function (data) {
-      document.getElementById('numOfOnline').innerText = data;
-    });
-
-    socket.emit("Online-Offline", 'connect');
+    socket.emit("finishCheckin", 'connect');
   </script>
 </body>
 

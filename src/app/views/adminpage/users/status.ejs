@@ -79,6 +79,7 @@
                   style="width: 100%; min-width: 600px;">
                   <thead>
                     <tr>
+                      <th>ID</th>
                       <th>Họ và tên</th>
                       <th>Trường</th>
                       <th>Câu lạc bộ</th>
@@ -111,6 +112,7 @@
 
       var myData = [
         {
+          "data": "1123",
           "fullname": "Nguyễn Văn A",
           "university": "CNTT",
           "clb": "12345678",
@@ -122,12 +124,14 @@
       $('#datatable').dataTable({
         data: myData,
         columns: [
+          { mData: 'data' },
           { mData: 'fullname' },
           { mData: 'university' },
           { mData: 'clb' },
           { mData: 'numOfJoiningStaff' },
           { mData: 'rank' }
-        ]
+        ],
+        "order": [[5, 'asc']]
       });
 
     });
@@ -144,6 +148,7 @@
       $('#datatable').dataTable({
         data: data,
         columns: [
+          { mData: 'data' },
           { mData: 'fullname' },
           { mData: 'university' },
           { mData: 'clb' },
