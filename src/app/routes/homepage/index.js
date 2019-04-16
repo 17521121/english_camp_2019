@@ -104,12 +104,12 @@ router.get("/:id", async (req, res, next) => {
       },
     ]);
     let facebookCount = await mongoose.model('facebook').count();
-    console.log(university, facebookCount);
+    // console.log(university, facebookCount);
     let user = await mongoose.model("facebook").findById(req.params.id);
     if (_.isEmpty(user)) {
       throw Error("Not users");
     }
-    console.log(user);
+    // console.log(user);
     return res.render("homepage/index", { user: user, university, facebookCount, universityMore });
   } catch (err) {
     return res.render("homepage/index", {
@@ -140,24 +140,5 @@ router.post("/set-university", async (req, res, next) => {
     return res.redirect(`/${req.user._id}`)
   }
 });
-
-router.get('/checkin/info', async (req, res, next) => {
-  try {
-    let universities = await mongoose.model('university').find()
-    return res.render('homepage/checkin', {universities: universities})
-  }
-  catch(err) {
-    next();
-  }
-})
-router.post('/checkin/info', async (req, res, next) => {
-  try {
-    let insert = await {...req.body}
-    return res.render('homepage/checkin/qrcode', {data: insert})
-  }
-  catch(err) {
-    next();
-  }
-})
 
 module.exports = router;

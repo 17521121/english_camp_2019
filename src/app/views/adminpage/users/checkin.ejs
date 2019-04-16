@@ -30,48 +30,33 @@
 
 <body>
   <div class="container" style="margin-top: 30px;">
-    <form action="/checkin/info" method="post">
+    <form action="/admin/users/status" method="post">
       <h2>Hãy điền thông tin cá nhân của bạn!</h2>
       <hr>
       <h5>Họ và tên</h5>
+      <input type="text" name="data" value="<%- data %>" style="display: none">
       <input type="text" name="fullname">
-      <h5>MSSV</h5>
-      <input type="number" name="MSSV">
       <h5>Chọn trường</h5>
       <select name="university"  class="form-control">
         <% universities.map(university => { %>
          <option value="<%- university.name  %>" icon="iw-way"><%- university.name  %></option>
         <% }) %>
       </select>
+      <h5>CLB</h5>
+      <input type="text" name="clb">
+      <hr>
       <button type="submit" id="submit">Xác nhận</button>
     </form>
    
   </div>
 
   <% include ../partials/scripts %>
-  <script src="../../socket.io/socket.io.js"></script>
+  <script src="socket.io/socket.io.js"></script>
   <script>
     var socket = io.connect("");
     socket.on("Online-Offline", function (data) {
       document.getElementById('numOfOnline').innerText = data;
     });
-
-    //Rank thay đổi 
-    socket.on("finishCheckin", async function (data) {
-      $('#datatable').dataTable({
-        data: data,
-        columns: [
-          { mData: 'fullname' },
-          { mData: 'MSSV' },
-          { mData: 'university' },
-          { mData: 'numOfJoiningStaff' },
-          { mData: 'rank' }
-        ]
-      });
-
-      await $('#datatable').dataTable().fnClearTable();
-      $('#datatable').dataTable().fnAddData(data);
-    })
 
     socket.emit("Online-Offline", 'connect');
   </script>

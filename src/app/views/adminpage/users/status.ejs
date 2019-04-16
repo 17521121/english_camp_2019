@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8" />
   <% include ../partials/css %>
-
   <style>
     body,
     html {
@@ -51,11 +50,9 @@
       vertical-align: middle;
     }
   </style>
-
+  <title>Bảng xếp hạng</title>
   <link href="/adminpage/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
   <link href="/adminpage/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-
-
 </head>
 
 <body>
@@ -83,8 +80,8 @@
                   <thead>
                     <tr>
                       <th>Họ và tên</th>
-                      <th>MSSV</th>
                       <th>Trường</th>
+                      <th>Câu lạc bộ</th>
                       <th>Số gian hàng đã tham gia</th>
                       <th>Xếp hạng</th>
                     </tr>
@@ -113,10 +110,10 @@
       // Responsive Datatable
 
       var myData = [
-         {
+        {
           "fullname": "Nguyễn Văn A",
-          "MSSV": "12345678",
           "university": "CNTT",
+          "clb": "12345678",
           "numOfJoiningStaff": "0",
           "rank": "1"
         },
@@ -126,8 +123,8 @@
         data: myData,
         columns: [
           { mData: 'fullname' },
-          { mData: 'MSSV' },
           { mData: 'university' },
+          { mData: 'clb' },
           { mData: 'numOfJoiningStaff' },
           { mData: 'rank' }
         ]
@@ -148,8 +145,8 @@
         data: data,
         columns: [
           { mData: 'fullname' },
-          { mData: 'MSSV' },
           { mData: 'university' },
+          { mData: 'clb' },
           { mData: 'numOfJoiningStaff' },
           { mData: 'rank' }
         ]
@@ -159,7 +156,6 @@
       $('#datatable').dataTable().fnAddData(data);
     })
 
-    socket.emit("Online-Offline", 'connect');
   </script>
 
 </body>

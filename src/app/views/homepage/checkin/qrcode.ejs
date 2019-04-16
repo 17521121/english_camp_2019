@@ -31,7 +31,7 @@
 
 <body>
   <div class="container">
-    <h2>Hãy đến từng gian hàng để checkin!</h2>
+    <h2>In qrcode</h2>
     <hr>
     
     <div id="output"></div>
@@ -42,7 +42,7 @@
   <script src="/homepage/js/jquery.qrcode.min.js"></script>
   <script>
     jQuery(function () {
-      jQuery('#output').qrcode(window.location.origin + "/admin/users/status?username=<%- data.fullname %>&MSSV=<%- data.MSSV %>&university=<%- data.university %>");
+      jQuery('#output').qrcode("https://englishcamp.hoisinhvientphcm.com/admin/users/status/" + '<%- qrcode.data %>');
     })
   </script>
   <script src="../socket.io/socket.io.js"></script>
