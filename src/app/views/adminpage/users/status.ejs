@@ -110,19 +110,19 @@
     $(document).ready(function () {
       // Responsive Datatable
 
-      var myData = [
-        {
-          "data": "1123",
-          "fullname": "Nguyễn Văn A",
-          "university": "CNTT",
-          "clb": "12345678",
-          "numOfJoiningStaff": "0",
-          "rank": "1"
-        },
-      ];
+      // var myData = [
+      //   {
+      //     "data": "1123",
+      //     "fullname": "Nguyễn Văn A",
+      //     "university": "CNTT",
+      //     "clb": "12345678",
+      //     "numOfJoiningStaff": "0",
+      //     "rank": "1"
+      //   },
+      // ];
 
       $('#datatable').dataTable({
-        data: myData,
+        data: [<%- qrcodes %>],
         columns: [
           { mData: 'data' },
           { mData: 'fullname' },
@@ -131,7 +131,8 @@
           { mData: 'numOfJoiningStaff' },
           { mData: 'rank' }
         ],
-        "order": [[5, 'asc']]
+        "order": [[5, 'asc']],
+        paging: false,
       });
 
     });
@@ -143,24 +144,27 @@
       document.getElementById('numOfOnline').innerText = data;
     });
 
-    //Rank thay đổi 
-    socket.on("finishCheckin", async function (data) {
-      $('#datatable').dataTable({
-        data: data,
-        columns: [
-          { mData: 'data' },
-          { mData: 'fullname' },
-          { mData: 'university' },
-          { mData: 'clb' },
-          { mData: 'numOfJoiningStaff' },
-          { mData: 'rank' }
-        ]
+    setInterval(function () {
+      $.post('/admin/users/status/getData', function (x) {
+        $('#datatable').dataTable({
+          data: x,
+          columns: [
+            { mData: 'data' },
+            { mData: 'fullname' },
+            { mData: 'university' },
+            { mData: 'clb' },
+            { mData: 'numOfJoiningStaff' },
+            { mData: 'rank' }
+          ], "order": [[5, 'asc']],
+          paging: false,
+          destroy: true,
+          searching: false
+        });
+
+        $('#datatable').dataTable().fnClearTable();
+        $('#datatable').dataTable().fnAddData(x);
       });
-
-      await $('#datatable').dataTable().fnClearTable();
-      $('#datatable').dataTable().fnAddData(data);
-    })
-
+    }, 3000)
   </script>
 
 </body>
