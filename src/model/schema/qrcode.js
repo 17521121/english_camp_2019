@@ -24,8 +24,7 @@ var qrcode = new mongoose.Schema({
   },
   staffId: [{
     type: String
-  }]
-  ,
+  }],
   rank: {
     type: Number
   }
