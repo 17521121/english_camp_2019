@@ -107,43 +107,6 @@
 
   <script src="../../socket.io/socket.io.js"></script>
   <script>
-    $(document).ready(function () {
-      // Responsive Datatable
-
-      // var myData = [
-      //   {
-      //     "data": "1123",
-      //     "fullname": "Nguyễn Văn A",
-      //     "university": "CNTT",
-      //     "clb": "12345678",
-      //     "numOfJoiningStaff": "0",
-      //     "rank": "1"
-      //   },
-      // ];
-
-      $('#datatable').dataTable({
-        data: [<% - qrcodes %>],
-        columns: [
-          { mData: 'data' },
-          { mData: 'fullname' },
-          { mData: 'university' },
-          { mData: 'clb' },
-          { mData: 'numOfJoiningStaff' },
-          { mData: 'rank' }
-        ],
-        "order": [[5, 'asc']],
-        paging: false,
-      });
-
-    });
-
-    const sleep = m => new Promise(r => setTimeout(r, m))
-
-    var socket = io.connect("");
-    // socket.on("Online-Offline", function (data) {
-    //   document.getElementById('numOfOnline').innerText = data;
-    // });
-
     setInterval(function () {
       $.post('/admin/users/status/getData', function (x) {
         var count = 0;
@@ -162,7 +125,7 @@
             { mData: 'numOfJoiningStaff' },
             { mData: 'rank' }
           ], "order": [[5, 'asc']],
-          paging: false,
+           
           destroy: true,
           searching: false
         });
