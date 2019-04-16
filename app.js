@@ -55,7 +55,10 @@ app.use((req, res, next) => {
   res.locals.domain = config.domain
   next()
 })
+
 app.use('/setup', require('app/routes/setup'))
+app.use('/setup2', require('app/routes/setup2'))
+
 app.use('/admin', require('app/routes/adminpage'));
 app.use("/", require("app/routes/homepage"));
 
