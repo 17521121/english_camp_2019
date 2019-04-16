@@ -1,0 +1,80 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <!-- title -->
+  <title>English Camp 2019 - Ngày hội sinh viên với ngoại ngữ</title>
+
+  <meta name="description" content="English Camp 2019 - Ngày hội sinh viên với ngoại ngữ">
+  <!-- keywords -->
+  <meta name="keywords"
+    content="bonjour uit, uit, bonjour, tsv, sinh vien, ngay hoi, doan, hoi, doan hoi, cong nghẹ thong tin, 2018">
+  <meta charset="utf-8">
+  <meta name="author" content="WebDev Studios">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+
+  <% include ../partials/css %>
+  <style>
+    h5 {
+      margin: 10px;
+    }
+
+    #submit {
+      font-size: 15px;
+      padding: 7px;
+     
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container" style="margin-top: 30px;">
+    <form action="/checkin/info" method="post">
+      <h2>Hãy điền thông tin cá nhân của bạn!</h2>
+      <hr>
+      <h5>Họ và tên</h5>
+      <input type="text" name="fullname">
+      <h5>MSSV</h5>
+      <input type="number" name="MSSV">
+      <h5>Chọn trường</h5>
+      <select name="university"  class="form-control">
+        <% universities.map(university => { %>
+         <option value="<%- university.name  %>" icon="iw-way"><%- university.name  %></option>
+        <% }) %>
+      </select>
+      <button type="submit" id="submit">Xác nhận</button>
+    </form>
+   
+  </div>
+
+  <% include ../partials/scripts %>
+  <script src="../../socket.io/socket.io.js"></script>
+  <script>
+    var socket = io.connect("");
+    socket.on("Online-Offline", function (data) {
+      document.getElementById('numOfOnline').innerText = data;
+    });
+
+    //Rank thay đổi 
+    socket.on("finishCheckin", async function (data) {
+      $('#datatable').dataTable({
+        data: data,
+        columns: [
+          { mData: 'fullname' },
+          { mData: 'MSSV' },
+          { mData: 'university' },
+          { mData: 'numOfJoiningStaff' },
+          { mData: 'rank' }
+        ]
+      });
+
+      await $('#datatable').dataTable().fnClearTable();
+      $('#datatable').dataTable().fnAddData(data);
+    })
+
+    socket.emit("Online-Offline", 'connect');
+  </script>
+</body>
+
+</html>

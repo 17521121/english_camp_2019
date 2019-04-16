@@ -82,8 +82,9 @@
                   style="width: 100%; min-width: 600px;">
                   <thead>
                     <tr>
-                      <th>Hình đại diện</th>
-                      <th>Tên User</th>
+                      <th>Họ và tên</th>
+                      <th>MSSV</th>
+                      <th>Trường</th>
                       <th>Số gian hàng đã tham gia</th>
                       <th>Xếp hạng</th>
                     </tr>
@@ -112,30 +113,10 @@
       // Responsive Datatable
 
       var myData = [
-        {
-          "avatar": '<img src="/adminpage/assets/images/profile.jpg" width="100" alt="">',
-          "fullname": "Nguyen Van A",
-          "numOfJoiningStaff": "0",
-          "rank": "1"
-        }, 
-        {
-          "avatar": '<img src="/adminpage/assets/images/profile.jpg" width="100" alt="">',
-          "fullname": "Nguyen Van A",
-          "numOfJoiningStaff": "0",
-          "rank": "1"
-        },{
-          "avatar": '<img src="/adminpage/assets/images/profile.jpg" width="100" alt="">',
-          "fullname": "Nguyen Van A",
-          "numOfJoiningStaff": "0",
-          "rank": "1"
-        },{
-          "avatar": '<img src="/adminpage/assets/images/profile.jpg" width="100" alt="">',
-          "fullname": "Nguyen Van A",
-          "numOfJoiningStaff": "0",
-          "rank": "1"
-        },{
-          "avatar": '<img src="/adminpage/assets/images/profile.jpg" width="100" alt="">',
-          "fullname": "Nguyen Van A",
+         {
+          "fullname": "Nguyễn Văn A",
+          "MSSV": "12345678",
+          "university": "CNTT",
           "numOfJoiningStaff": "0",
           "rank": "1"
         },
@@ -144,8 +125,9 @@
       $('#datatable').dataTable({
         data: myData,
         columns: [
-          { mData: 'avatar' },
           { mData: 'fullname' },
+          { mData: 'MSSV' },
+          { mData: 'university' },
           { mData: 'numOfJoiningStaff' },
           { mData: 'rank' }
         ]
@@ -165,8 +147,9 @@
       $('#datatable').dataTable({
         data: data,
         columns: [
-          { mData: 'avatar' },
           { mData: 'fullname' },
+          { mData: 'MSSV' },
+          { mData: 'university' },
           { mData: 'numOfJoiningStaff' },
           { mData: 'rank' }
         ]

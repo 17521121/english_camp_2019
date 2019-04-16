@@ -141,9 +141,19 @@ router.post("/set-university", async (req, res, next) => {
   }
 });
 
-router.get('/checkin/:rands', async (req, res, next) => {
+router.get('/checkin/info', async (req, res, next) => {
   try {
-    return res.render('homepage/checkin')
+    let universities = await mongoose.model('university').find()
+    return res.render('homepage/checkin', {universities: universities})
+  }
+  catch(err) {
+    next();
+  }
+})
+router.post('/checkin/info', async (req, res, next) => {
+  try {
+    let insert = await {...req.body}
+    return res.render('homepage/checkin/qrcode', {data: insert})
   }
   catch(err) {
     next();

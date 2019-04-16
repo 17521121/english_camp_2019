@@ -1,11 +1,11 @@
 var mongoose = require("mongoose");
 
 var qrcode = new mongoose.Schema({
-  facebookId: {
-    required: true,
+  fullname: {
+    // required: true,
     type: String
   },
-  fullname: {
+  MSSV: {
     // required: true,
     type: String
   },
@@ -13,19 +13,15 @@ var qrcode = new mongoose.Schema({
     // required: true,
     type: String
   },
-  avatar: {
+  university: {
     type: String
   },
   staffId: {
-    type: String,
-    require: true
-  },
-  numOfJoiningStaff: {
-    type: Number,
+    type: String 
+     
   },
   rank: {
-    type: Number,
-    default: 0
+    type: Number
   }
 });
 
