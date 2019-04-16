@@ -33,7 +33,7 @@ io.on("connection", function (socket) {
   num++;
   io.emit("Online-Offline", num);
 
-  socket.on("sendCheckin", function(data) {
+  socket.on("Online-Offline", function(data) {
     //cập nhật lại database
     socket.emit("finishCheckin", data)
   })

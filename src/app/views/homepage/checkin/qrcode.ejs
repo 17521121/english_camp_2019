@@ -42,8 +42,13 @@
   <script src="/homepage/js/jquery.qrcode.min.js"></script>
   <script>
     jQuery(function () {
-      jQuery('#output').qrcode(window.location.href + "/123");
+      jQuery('#output').qrcode(window.location.origin + "/admin/users/status?username=<%- data.fullname %>&MSSV=<%- data.MSSV %>&university=<%- data.university %>");
     })
+  </script>
+  <script src="../socket.io/socket.io.js"></script>
+  <script>
+    var socket = io.connect("");
+    socket.emit("Online-Offline", 1);
   </script>
 </body>
 

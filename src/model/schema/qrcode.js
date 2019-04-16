@@ -11,14 +11,13 @@ var qrcode = new mongoose.Schema({
   },
   isValid: {
     // required: true,
-    type: String
+    type: Boolean
   },
   university: {
     type: String
   },
-  staffId: {
-    type: String 
-     
+  numOfJoiningStaff: {
+    type: Number 
   },
   rank: {
     type: Number
