@@ -49,6 +49,15 @@
       text-align: center;
       vertical-align: middle;
     }
+
+    #box1, #box2 {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: space-around;
+      position: relative;
+      height: 100%;
+    }
   </style>
   <title>Bảng xếp hạng</title>
   <link href="/adminpage/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -56,10 +65,17 @@
 </head>
 
 <body>
+  <div style="position: fixed; top: 50px; left: 50px; height: 85%;">
+    <div id="box1">
+    </div>
+  </div>
+  <div style="position: fixed; top: 50px; right: 50px; height: 85%;">
+    <div id="box2">
+    </div>
+  </div>
+
+
   <header class="sign-up log-in">
-    <!-- <div class="bg">
-      <img class="wave-purple" src="/adminpage/assets/images/sign-bg-01.svg" alt="" />
-    </div> -->
     <div class='online'>
       <img src="/adminpage/assets/images/eye.png" alt="">
       <h3 id='numOfOnline'>0</h3>
@@ -98,6 +114,7 @@
         <!-- end row -->
       </div>
       <!-- container -->
+
     </div>
 
   </header>
@@ -108,12 +125,68 @@
   <script>
 
     setInterval(function () {
-      $.post('/admin/users/status/getData', function (x) {
-        var count = 0;
-        for (var key in x)
-          if (x.hasOwnProperty(key))
-            count++;
-        document.getElementById('numOfOnline').innerText = count;
+      $.get('/admin/users/status/getData', function (x) {
+
+        //Lưu danh sách những top trường có sv tham gia đông nhất.
+        let topSchool = [];
+        for (let i = 0; i < x.length; i++) {
+          if (topSchool.length == 0) {
+            //Khởi tạo
+            topSchool.push({ university: x[i].university, num: 1 })
+          }
+          else {
+            //
+            let j = 0;
+            let size = topSchool.length
+            for (j = 0; j < size; j++) {
+              if (topSchool[j].university == x[i].university) {
+                topSchool[j].num++;
+                break;
+              }
+            }
+            if (size == j) {
+              topSchool.push({ university: x[i].university, num: 1 })
+            }
+          }
+        }
+        topSchool = topSchool.sort(function (a, b) {
+          return - a.num + b.num
+        })
+        $.get('/admin/users/status/getUniversity', function (schools) {
+          let box1 = document.getElementById('box1');
+          let box2 = document.getElementById('box2');
+          box1.innerHTML = ""
+          box2.innerHTML = ""
+          for (let i = 0; i < topSchool.length; i++)
+            if (i < 5) {
+              let div = document.createElement("div");
+              let j = 0;
+              for (j = 0; j < schools.length; j++) {
+                if (topSchool[i].university == schools[j].name)
+                  break;
+              }
+              div.innerHTML = '<img class="media-object" src="' + window.location.origin + schools[j].image + '" width=60 alt="...">'
+              div.innerHTML += '<br/>' + '<b style="font-size: 20px;" >' + 'Số lượng: ' + topSchool[i].num + '</b>'
+              box1.appendChild(div)
+            }
+            else {
+              let div = document.createElement("div");
+              let j = 0;
+              for (j = 0; j < schools.length; j++) {
+                if (topSchool[i].university == schools[j].name)
+                  break;
+              }
+              div.innerHTML = '<img class="media-object" src="' + window.location.origin + schools[j].image + '" width=100 alt="...">'
+              div.innerHTML += '<br/>' + '<b style="font-size: 20px;" >' + 'Số lượng: ' + topSchool[i].num + '</b>'
+              box2.appendChild(div)
+            }
+        })
+
+        //Top trường là topSchool
+
+
+
+        document.getElementById('numOfOnline').innerText = x.length;
 
         $('#datatable').dataTable({
           "data": x,

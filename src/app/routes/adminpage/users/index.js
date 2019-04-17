@@ -11,8 +11,17 @@ router.get('/status', async (req, res, next) => {
   catch (err) {
     next();
   }
+  })
+  router.get('/status/getUniversity', async (req, res, next) => {
+  try {
+    let universities = await mongoose.model('university').find({})
+    return res.json(universities)
+  }
+  catch (err) {
+    next();
+  }
 })
-router.post('/status/getData', async (req, res, next) => {
+router.get('/status/getData', async (req, res, next) => {
   try {
     let qrcodes = await mongoose.model('qrcode').find({}, { '__v': 0, '_id': 0, 'staffId': 0})
     return res.json(qrcodes)
