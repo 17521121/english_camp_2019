@@ -80,14 +80,13 @@ router.get("/", async (req, res, next) => {
     },
   ];
   const saltRounds = 10;
-  for (let i = 0; i < insert.length; i++) {
-    bcrypt.hash(insert.password, saltRounds, async (err, hash) => {
-      insert[i].password = hash;
-
-    });
+  for (let i of insert) {
+    let hash = await bcrypt.hash(i.password, saltRounds)
+    console.log(i)
+    i.password = hash;
   }
   let createUsers = await mongoose.model("users").insertMany(insert);
-  console.log(usersInfo);
+  return res.send("Done");
 });
 
 module.exports = router;

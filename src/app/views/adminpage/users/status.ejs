@@ -105,8 +105,8 @@
   <script src="/adminpage/assets/plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="/adminpage/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
 
-  <script src="../../socket.io/socket.io.js"></script>
   <script>
+
     setInterval(function () {
       $.post('/admin/users/status/getData', function (x) {
         var count = 0;
@@ -116,7 +116,7 @@
         document.getElementById('numOfOnline').innerText = count;
 
         $('#datatable').dataTable({
-          data: x,
+          "data": x,
           columns: [
             { mData: 'data' },
             { mData: 'fullname' },
@@ -125,7 +125,8 @@
             { mData: 'numOfJoiningStaff' },
             { mData: 'rank' }
           ], "order": [[5, 'asc']],
-           
+          "pageLength": 50,
+
           destroy: true,
           searching: false
         });
@@ -134,6 +135,7 @@
         $('#datatable').dataTable().fnAddData(x);
       });
     }, 3000)
+
   </script>
 
 </body>

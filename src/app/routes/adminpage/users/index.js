@@ -6,7 +6,6 @@ router.get('/logout', require('./logout'))
 router.get('/status', async (req, res, next) => {
   try {
     let qrcodes = await mongoose.model('qrcode').find({}, { '__v': 0, '_id': 0, 'staffId': 0})
-    // console.log(qrcodes)
     return res.render('adminpage/users/status', { qrcodes: qrcodes })
   }
   catch (err) {
@@ -16,7 +15,6 @@ router.get('/status', async (req, res, next) => {
 router.post('/status/getData', async (req, res, next) => {
   try {
     let qrcodes = await mongoose.model('qrcode').find({}, { '__v': 0, '_id': 0, 'staffId': 0})
-    // console.log(qrcodes)
     return res.json(qrcodes)
   }
   catch (err) {
