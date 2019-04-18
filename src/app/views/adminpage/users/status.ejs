@@ -9,11 +9,22 @@
     html {
       width: 100%;
       height: 100%;
-      background-image: url('/adminpage/assets/images/sign-bg-01.svg');
+
+    }
+
+    html,body {
+      background-image: url('/adminpage/assets/images/bg_checkin.png');
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+ 
+      margin:  0;
+      padding: 0;
     }
 
     .online {
-      position: absolute;
+      position: fixed;
       top: 0;
       right: 0;
       box-shadow: 0 0 4px 3px #50c249;
@@ -50,7 +61,8 @@
       vertical-align: middle;
     }
 
-    #box1, #box2 {
+    #box1,
+    #box2 {
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
@@ -86,9 +98,11 @@
         <div class="row">
           <div class="col-12">
 
-            <div class="card-box table-responsive">
+            <div class="card-box table-responsive"  style="margin-top: 120px;">
 
-              <h4 class="m-t-0 header-title my-title">QUẢN LÍ THÍ SINH</h4>
+              <h4 class="m-t-0 header-title my-title">Bảng xếp hạng</h4>
+              <div style="text-align: center;" onclick="stopUpdate()"><button>Ngừng cập nhật</button></div>
+
               <div class="container" style="overflow-x: auto">
 
                 <table cellspacing="0" id="datatable" class="table table-hover table-bordered"
@@ -123,10 +137,8 @@
   <script src="/adminpage/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
 
   <script>
-
-    setInterval(function () {
+    function updateDataTable() {
       $.get('/admin/users/status/getData', function (x) {
-
         //Lưu danh sách những top trường có sv tham gia đông nhất.
         let topSchool = [];
         for (let i = 0; i < x.length; i++) {
@@ -199,15 +211,18 @@
             { mData: 'rank' }
           ], "order": [[5, 'asc']],
           "pageLength": 50,
-
           destroy: true,
-          searching: false
+
         });
 
         $('#datatable').dataTable().fnClearTable();
         $('#datatable').dataTable().fnAddData(x);
       });
-    }, 3000)
+    }
+    var runInterval = setInterval(updateDataTable, 3000)
+    function stopUpdate() {
+      clearInterval(runInterval)
+    }
 
   </script>
 

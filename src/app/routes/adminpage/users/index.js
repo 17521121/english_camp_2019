@@ -40,6 +40,9 @@ router.get('/status/:id', async (req, res, next) => {
         return res.send("Đã checkin rồi!")
       }
       else {
+        if(req.user.position === undefined) {
+          return res.send("Tài khoản của bạn không thể checkin!")
+        }
         await qrcode.staffId.push(req.user.position);
         qrcode.numOfJoiningStaff++;
         //Cập nhật lại rank
@@ -71,6 +74,12 @@ router.get('/status/:id', async (req, res, next) => {
 router.post('/status', async (req, res, next) => {
   try {
     let insert = { ...req.body }
+    if(insert.university[0] == "others"){
+      insert.university = insert.university[1]
+    } else {
+      insert.university = insert.university[0]
+    }
+    await console.log(insert)
     let qrcode = await mongoose.model('qrcode').create(insert)
     qrcode.numOfJoiningStaff = 0;
     //Cập nhật rank:
@@ -81,6 +90,7 @@ router.post('/status', async (req, res, next) => {
     return res.send("Đăng kí tham dự thành công!")
   }
   catch (err) {
+    console.log(err)
     next()
   }
 })

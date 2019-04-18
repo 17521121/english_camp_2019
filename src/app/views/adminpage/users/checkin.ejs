@@ -22,7 +22,7 @@
     #submit {
       font-size: 15px;
       padding: 7px;
-     
+
     }
   </style>
 
@@ -37,21 +37,30 @@
       <input type="text" name="data" value="<%- data %>" style="display: none">
       <input type="text" name="fullname">
       <h5>Chọn trường</h5>
-      <select name="university"  class="form-control">
+      <select name="university" onchange='checkvalue(this.value)' class="form-control">
         <% universities.map(university => { %>
-         <option value="<%- university.name  %>" icon="iw-way"><%- university.name  %></option>
+        <option value="<%- university.name  %>" icon="iw-way"><%- university.name  %></option>
         <% }) %>
+        <option value="others">Trường nào đó khác ...</option>
       </select>
+      <input type="text" name="university" id="university" style='display: none' />
       <h5>CLB</h5>
       <input type="text" name="clb">
       <hr>
       <button type="submit" id="submit">Xác nhận</button>
     </form>
-   
+
   </div>
 
   <% include ../partials/scripts %>
-  
+  <script>
+    function checkvalue(val) {
+      if (val === "others")
+        document.getElementById('university').style.display = 'block';
+      else
+        document.getElementById('university').style.display = 'none';
+    }
+  </script>
 </body>
 
 </html>
