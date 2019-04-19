@@ -72,7 +72,7 @@
       height: 100%;
     }
   </style>
-  <title>Bảng xếp hạng</title>
+  <title>Ranking</title>
   <link href="/adminpage/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
   <link href="/adminpage/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
   <link href="/adminpage/assets/plugins/datatables/jquery.dataTables.min" rel="stylesheet" type="text/css" />
@@ -104,8 +104,8 @@
 
             <div class="card-box table-responsive" style="margin-top: 120px;">
 
-              <h4 class="m-t-0 header-title my-title">Bảng xếp hạng</h4>
-              <div style="text-align: center;" onclick="stopUpdate()"><button>Ngừng cập nhật</button></div>
+              <h4 class="m-t-0 header-title my-title">Ranking List</h4>
+              <div style="text-align: center;" onclick="stopUpdate()"><button>Stop update</button></div>
 
               <div class="container" style="overflow-x: auto">
 
@@ -114,11 +114,11 @@
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>Họ và tên</th>
-                      <th>Trường</th>
-                      <th>Câu lạc bộ</th>
-                      <th>Số gian hàng đã tham gia</th>
-                      <th>Xếp hạng</th>
+                      <th>Fullname</th>
+                      <th>University</th>
+                      <th>English Club</th>
+                      <th>Achivements</th>
+                      <th>Rank</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -189,7 +189,7 @@
                   break;
               }
               div.innerHTML = '<img class="media-object" src="' + window.location.origin + schools[j].image + '" height=50 alt="...">'
-              div.innerHTML += '<br/>' + '<b style="font-size: 20px;" >' + 'Số lượng: ' + topSchool[i].num + '</b>'
+              div.innerHTML += '<br/>' + '<b style="font-size: 20px;" >' + 'Participants: ' + topSchool[i].num + '</b>'
               box1.appendChild(div)
             }
         })
@@ -230,7 +230,7 @@
             let div = document.createElement("div");
 
             div.innerHTML = '<img class="media-object" src="' + window.location.origin + "/homepage/images/logoclb/" + topClb[i].clb + ".png" + '" width=100 alt="...">'
-            div.innerHTML += '<br/>' + '<b style="font-size: 20px;" >' + 'Số lượng: ' + topClb[i].num + '</b>'
+            div.innerHTML += '<br/>' + '<b style="font-size: 20px;" >' + 'Participants: ' + topClb[i].num + '</b>'
             box2.appendChild(div)
           }
         //End of clb
@@ -253,7 +253,7 @@
             // 'excel', 'print'
             {
               extend: 'excel',
-              text: 'Xuất ra excel',
+              text: 'Export to excel',
               exportOptions: {
                 modifier: {
                   page: 'current'

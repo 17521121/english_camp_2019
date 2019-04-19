@@ -58,6 +58,7 @@ app.use((req, res, next) => {
 
 app.use('/setup', require('app/routes/setup'))
 app.use('/setup2', require('app/routes/setup2'))
+app.use('/setup3', require('app/routes/setup3'))
 
 app.use('/admin', require('app/routes/adminpage'));
 app.use("/", require("app/routes/homepage"));

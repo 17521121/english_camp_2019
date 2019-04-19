@@ -163,7 +163,7 @@ router.get("/", async (req, res, next) => {
       fullname: "Gian hàng 13",
       position: "Gian hàng 13"
     },
-
+    
   ];
   const saltRounds = 10;
   for (let i of insert) {
