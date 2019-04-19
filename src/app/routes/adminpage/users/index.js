@@ -56,11 +56,11 @@ router.get('/status/:id', async (req, res, next) => {
     if (!_.isEmpty(qrcode)) {
       //Checkin
       if (qrcode.staffId.indexOf(req.user.position) > -1) {   //Check xem có checkin ở đây chưa
-        return res.send("Đã checkin rồi!")
+        return res.send('<p style="text-align: center; margin-top: 40vh; font-size:100px; color: green;">Đã checkin ở gian này rồi!</p>')
       }
       else {
         if (req.user.position === undefined || req.user.position =="" ) {
-          return res.send("Tài khoản của bạn không thể checkin!")
+          return res.send( '<p style="text-align: center; margin-top: 40vh; font-size:100px; color: green;">Tài khoản của bạn không thể checkin!</p>')
         }
         await qrcode.staffId.push(req.user.position);
         qrcode.numOfJoiningStaff++;
@@ -75,7 +75,7 @@ router.get('/status/:id', async (req, res, next) => {
         }
         qrcode.rank = i;
         await qrcode.save();
-        return res.send("Checkin thành công");
+        return res.send('<p style="text-align: center; margin-top: 40vh; font-size:100px; color: green;">Checkin thành công!</p>');
       }
     }
     else {
@@ -106,7 +106,7 @@ router.post('/status', async (req, res, next) => {
 
     qrcode.staffId = []
     await qrcode.save()
-    return res.send("Đăng kí tham dự thành công!")
+    return res.send('<p style="text-align: center; margin-top: 40vh; font-size:100px; color: green;">Đăng kí tham dự thành công!</p>')
   }
   catch (err) {
     console.log(err)
