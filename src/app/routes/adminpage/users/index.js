@@ -5,14 +5,14 @@ router.get('/logout', require('./logout'))
 
 router.get('/status', async (req, res, next) => {
   try {
-    let qrcodes = await mongoose.model('qrcode').find({}, { '__v': 0, '_id': 0, 'staffId': 0})
+    let qrcodes = await mongoose.model('qrcode').find({}, { '__v': 0, '_id': 0, 'staffId': 0 })
     return res.render('adminpage/users/status', { qrcodes: qrcodes })
   }
   catch (err) {
     next();
   }
-  })
-  router.get('/status/getUniversity', async (req, res, next) => {
+})
+router.post('/status/getUniversity', async (req, res, next) => {
   try {
     let universities = await mongoose.model('university').find({})
     return res.json(universities)
@@ -21,10 +21,29 @@ router.get('/status', async (req, res, next) => {
     next();
   }
 })
-router.get('/status/getData', async (req, res, next) => {
+router.post('/status/getCLB', async (req, res, next) => {
   try {
-    let qrcodes = await mongoose.model('qrcode').find({}, { '__v': 0, '_id': 0, 'staffId': 0})
+    let universities = await mongoose.model('university').find({})
+    return res.json(universities)
+  }
+  catch (err) {
+    next();
+  }
+})
+router.post('/status/getData', async (req, res, next) => {
+  try {
+    let qrcodes = await mongoose.model('qrcode').find({}, { '__v': 0, '_id': 0, 'staffId': 0 })
     return res.json(qrcodes)
+  }
+  catch (err) {
+    next();
+  }
+})
+
+router.post('/status/reset', async (req, res, next) => {
+  try {
+    let qrcode = await mongoose.model('qrcode').deleteMany({})
+    return res.send("Done")
   }
   catch (err) {
     next();
@@ -40,7 +59,7 @@ router.get('/status/:id', async (req, res, next) => {
         return res.send("Đã checkin rồi!")
       }
       else {
-        if(req.user.position === undefined) {
+        if (req.user.position === undefined || req.user.position =="" ) {
           return res.send("Tài khoản của bạn không thể checkin!")
         }
         await qrcode.staffId.push(req.user.position);
@@ -52,7 +71,7 @@ router.get('/status/:id', async (req, res, next) => {
           if (j.data != qrcode.data && j.numOfJoiningStaff < qrcode.numOfJoiningStaff) {
             i--;
           }
-          console.log(_.isEqual(j,qrcode))
+          console.log(_.isEqual(j, qrcode))
         }
         qrcode.rank = i;
         await qrcode.save();
@@ -74,7 +93,7 @@ router.get('/status/:id', async (req, res, next) => {
 router.post('/status', async (req, res, next) => {
   try {
     let insert = { ...req.body }
-    if(insert.university[0] == "others"){
+    if (insert.university[0] == "others") {
       insert.university = insert.university[1]
     } else {
       insert.university = insert.university[0]

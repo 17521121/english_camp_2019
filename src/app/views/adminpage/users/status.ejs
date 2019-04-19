@@ -12,14 +12,15 @@
 
     }
 
-    html,body {
+    html,
+    body {
       background-image: url('/adminpage/assets/images/bg_checkin.png');
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
- 
-      margin:  0;
+
+      margin: 0;
       padding: 0;
     }
 
@@ -74,14 +75,17 @@
   <title>Bảng xếp hạng</title>
   <link href="/adminpage/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
   <link href="/adminpage/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="/adminpage/assets/plugins/datatables/jquery.dataTables.min" rel="stylesheet" type="text/css" />
+
+  
 </head>
 
 <body>
-  <div style="position: fixed; top: 50px; left: 50px; height: 85%;">
+  <div style="position: fixed; top: 80px; left: 30px; height: 90%;">
     <div id="box1">
     </div>
   </div>
-  <div style="position: fixed; top: 50px; right: 50px; height: 85%;">
+  <div style="position: fixed; top: 80px; right: 30px; height: 90%;">
     <div id="box2">
     </div>
   </div>
@@ -98,7 +102,7 @@
         <div class="row">
           <div class="col-12">
 
-            <div class="card-box table-responsive"  style="margin-top: 120px;">
+            <div class="card-box table-responsive" style="margin-top: 120px;">
 
               <h4 class="m-t-0 header-title my-title">Bảng xếp hạng</h4>
               <div style="text-align: center;" onclick="stopUpdate()"><button>Ngừng cập nhật</button></div>
@@ -135,10 +139,17 @@
   <% include ../partials/scripts %>
   <script src="/adminpage/assets/plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="/adminpage/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
 
   <script>
     function updateDataTable() {
-      $.get('/admin/users/status/getData', function (x) {
+      $.post('/admin/users/status/getData', function (x) {
         //Lưu danh sách những top trường có sv tham gia đông nhất.
         let topSchool = [];
         for (let i = 0; i < x.length; i++) {
@@ -164,11 +175,11 @@
         topSchool = topSchool.sort(function (a, b) {
           return - a.num + b.num
         })
-        $.get('/admin/users/status/getUniversity', function (schools) {
+        $.post('/admin/users/status/getUniversity', function (schools) {
           let box1 = document.getElementById('box1');
-          let box2 = document.getElementById('box2');
+
           box1.innerHTML = ""
-          box2.innerHTML = ""
+
           for (let i = 0; i < topSchool.length; i++)
             if (i < 5) {
               let div = document.createElement("div");
@@ -177,25 +188,52 @@
                 if (topSchool[i].university == schools[j].name)
                   break;
               }
-              div.innerHTML = '<img class="media-object" src="' + window.location.origin + schools[j].image + '" width=60 alt="...">'
+              div.innerHTML = '<img class="media-object" src="' + window.location.origin + schools[j].image + '" height=50 alt="...">'
               div.innerHTML += '<br/>' + '<b style="font-size: 20px;" >' + 'Số lượng: ' + topSchool[i].num + '</b>'
               box1.appendChild(div)
             }
-            else {
-              let div = document.createElement("div");
-              let j = 0;
-              for (j = 0; j < schools.length; j++) {
-                if (topSchool[i].university == schools[j].name)
-                  break;
-              }
-              div.innerHTML = '<img class="media-object" src="' + window.location.origin + schools[j].image + '" width=100 alt="...">'
-              div.innerHTML += '<br/>' + '<b style="font-size: 20px;" >' + 'Số lượng: ' + topSchool[i].num + '</b>'
-              box2.appendChild(div)
-            }
         })
 
-        //Top trường là topSchool
+        //Top CLB
+        let topClb = [];
+        for (let i = 0; i < x.length; i++) {
+          if (topClb.length == 0) {
+            //Khởi tạo
+            topClb.push({ clb: x[i].clb, num: 1 })
+          }
+          else {
+            //
+            let j = 0;
+            let size = topClb.length
+            for (j = 0; j < size; j++) {
+              if (topClb[j].clb == x[i].clb) {
+                topClb[j].num++;
+                break;
+              }
+            }
+            if (size == j) {
+              topClb.push({ clb: x[i].clb, num: 1 })
+            }
+          }
+        }
+        topClb = topClb.sort(function (a, b) {
+          return - a.num + b.num
+        })
 
+        //Xuất
+        let box2 = document.getElementById('box2');
+
+        box2.innerHTML = ""
+        // console.log
+        for (let i = 0; i < topClb.length; i++)
+          if (i < 5) {
+            let div = document.createElement("div");
+
+            div.innerHTML = '<img class="media-object" src="' + window.location.origin + "/homepage/images/logoclb/" + topClb[i].clb + ".png" + '" width=100 alt="...">'
+            div.innerHTML += '<br/>' + '<b style="font-size: 20px;" >' + 'Số lượng: ' + topClb[i].num + '</b>'
+            box2.appendChild(div)
+          }
+        //End of clb
 
 
         document.getElementById('numOfOnline').innerText = x.length;
@@ -210,6 +248,19 @@
             { mData: 'numOfJoiningStaff' },
             { mData: 'rank' }
           ], "order": [[5, 'asc']],
+          dom: 'Bfrtip',
+          buttons: [
+            // 'excel', 'print'
+            {
+              extend: 'excel',
+              text: 'Xuất ra excel',
+              exportOptions: {
+                modifier: {
+                  page: 'current'
+                }
+              }
+            }
+          ],
           "pageLength": 50,
           destroy: true,
 
