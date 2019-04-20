@@ -98,6 +98,11 @@ router.post('/status', async (req, res, next) => {
     } else {
       insert.university = insert.university[0]
     }
+    if (insert.clb[0] == "others") {
+      insert.clb = insert.clb[1]
+    } else {
+      insert.clb = insert.clb[0]
+    }
     await console.log(insert)
     let qrcode = await mongoose.model('qrcode').create(insert)
     qrcode.numOfJoiningStaff = 0;

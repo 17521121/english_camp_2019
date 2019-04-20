@@ -188,7 +188,7 @@
                 if (topSchool[i].university == schools[j].name)
                   break;
               }
-              div.innerHTML = '<img class="media-object" src="' + window.location.origin + schools[j].image + '" height=50 alt="...">'
+              div.innerHTML = '<img class="media-object" src="' + window.location.origin + schools[j].image + '" height=50 alt="No image">'
               div.innerHTML += '<br/>' + '<b style="font-size: 20px;" >' + 'Participants: ' + topSchool[i].num + '</b>'
               box1.appendChild(div)
             }
@@ -229,7 +229,7 @@
           if (i < 5) {
             let div = document.createElement("div");
 
-            div.innerHTML = '<img class="media-object" src="' + window.location.origin + "/homepage/images/logoclb/" + topClb[i].clb + ".png" + '" width=100 alt="...">'
+            div.innerHTML = '<img class="media-object" src="' + window.location.origin + "/homepage/images/logoclb/" + topClb[i].clb + ".png" + '" width=100 alt="No image">'
             div.innerHTML += '<br/>' + '<b style="font-size: 20px;" >' + 'Participants: ' + topClb[i].num + '</b>'
             box2.appendChild(div)
           }

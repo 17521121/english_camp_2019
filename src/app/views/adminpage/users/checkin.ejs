@@ -45,7 +45,8 @@
       </select>
       <input type="text" name="university" id="university" style='display: none' placeholder="Nhập tên trường..." />
       <h5>CLB</h5>
-      <select name="clb"  class="form-control">
+      <select name="clb"  class="form-control" onchange='checkClb(this.value)'>
+      
         <option value="CLB ECLUS (ĐH Luật)" icon="iw-way">CLB ECLUS (ĐH Luật)</option>
         <option value="CLB ENF (HV Cán bộ)" icon="iw-way">CLB ENF (HV Cán bộ)</option>
         <option value="CLB ENGSCOPE (ĐH Nông Lâm)" icon="iw-way">CLB ENGSCOPE (ĐH Nông Lâm)</option>
@@ -59,8 +60,9 @@
         <option value="CLB TESC (CĐ Kinh tế TP HCM)" icon="iw-way">CLB TESC (CĐ Kinh tế TP HCM)</option>
         <option value="CLB TRIPLE E (HV Hàng Không)" icon="iw-way">CLB TRIPLE E (HV Hàng Không)</option>
         <option value="THE ALOPEX (ĐH Quốc tế)" icon="iw-way">THE ALOPEX (ĐH Quốc tế)</option>
+        <option value="others">Khác</option>
       </select>
-     
+      <input type="text" name="clb" id="clb" style='display: none' placeholder="Nhập tên clb " />
       
       <hr>
       <button type="submit" id="submit">Xác nhận</button>
@@ -75,6 +77,12 @@
         document.getElementById('university').style.display = 'block';
       else
         document.getElementById('university').style.display = 'none';
+    }
+    function checkClb(val) {
+      if (val === "others")
+        document.getElementById('clb').style.display = 'block';
+      else
+        document.getElementById('clb').style.display = 'none';
     }
   </script>
 </body>
